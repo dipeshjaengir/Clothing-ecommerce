@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import MagneticButton from '../common/MagneticButton';
 import LuxuryImage from '../common/LuxuryImage';
+import heroModel from '../../assets/hero_new.jpg';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -16,7 +17,7 @@ const Hero = () => {
   const imageRef = useRef(null);
   const shapesRef = useRef(null);
 
-  const heroModelUrl = "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800&auto=format&fit=crop";
+  const heroModelUrl = heroModel;
 
   useEffect(() => {
     let splitInstance;
