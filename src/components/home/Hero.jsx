@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import MagneticButton from '../common/MagneticButton';
 import LuxuryImage from '../common/LuxuryImage';
-import heroModel from '../../assets/hero.png';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -16,6 +15,9 @@ const Hero = () => {
   const ctaRef = useRef(null);
   const imageRef = useRef(null);
   const shapesRef = useRef(null);
+
+  // High-resolution Unsplash editorial fashion male model looking sideways in a beige luxury coat
+  const heroModelUrl = "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?q=80&w=800&auto=format&fit=crop";
 
   useEffect(() => {
     let splitInstance;
@@ -208,7 +210,7 @@ const Hero = () => {
             className="relative w-full max-w-[420px] aspect-[3/4.3] overflow-hidden rounded-[2.5rem] bg-luxury-card border border-luxury-border shadow-premium opacity-0 group"
           >
             <LuxuryImage
-              src={heroModel}
+              src={heroModelUrl}
               alt="LUXORA Campaign Model"
               className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-[1500ms]"
             />
