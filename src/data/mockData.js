@@ -238,7 +238,7 @@ export const products = [
     images: [
       "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1611085583191-a3b1a3a355db?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
       { name: "Oatmeal", hex: "#E3DFD5" },
@@ -268,7 +268,7 @@ export const products = [
     ],
     images: [
       "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
@@ -301,7 +301,7 @@ export const products = [
     images: [
       "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1548624149-f9b1859aa7d0?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
       { name: "Vintage Indigo", hex: "#4B617E" },
@@ -332,7 +332,7 @@ export const products = [
     images: [
       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1548624149-f9b1859aa7d0?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
       { name: "Desert Sand", hex: "#C2B29A" },
@@ -363,7 +363,7 @@ export const products = [
     images: [
       "https://images.unsplash.com/photo-1624222247344-550fb8ecf7db?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
       { name: "Chestnut Brown", hex: "#5C3A21" },
@@ -426,5 +426,5 @@ export const instagramFeed = [
   { id: "ig-3", img: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=500&auto=format&fit=crop" },
   { id: "ig-4", img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=500&auto=format&fit=crop" },
   { id: "ig-5", img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=500&auto=format&fit=crop" },
-  { id: "ig-6", img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=500&auto=format&fit=crop" }
+  { id: "ig-6", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=500&auto=format&fit=crop" }
 ];
