@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { Star, Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { reviews } from '../../data/mockData';
 
 // Swiper Styles
@@ -10,71 +10,90 @@ import 'swiper/css/pagination';
 
 const Reviews = () => {
   return (
-    <section className="py-24 bg-luxury-bg border-b border-luxury-border/60">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section className="py-32 bg-luxury-bg border-b border-luxury-border/60">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         
-        {/* Section Header */}
-        <div className="mb-12">
-          <span className="text-xs font-syne font-extrabold tracking-widest text-accent uppercase block mb-2">
-            06 // VOICES OF DISCRETION
-          </span>
-          <h2 className="font-syne text-3xl md:text-4xl font-black tracking-wider text-white uppercase">
-            CLIENT TESTIMONIALS
-          </h2>
-          <div className="h-[2px] bg-accent/20 w-16 mx-auto mt-4" />
-        </div>
-
-        {/* Testimonial Swiper Slider */}
-        <div className="relative pt-6 px-4 md:px-12">
-          <Quote className="w-12 h-12 text-accent/15 mx-auto mb-6 rotate-180" />
+        {/* Asymmetric Split Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-center">
           
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={50}
-            slidesPerView={1}
-            loop={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            className="testimonial-swiper"
-          >
-            {reviews.map((rev) => (
-              <SwiperSlide key={rev.id} className="pb-12">
-                <div className="flex flex-col items-center gap-6">
-                  {/* Rating Stars */}
-                  <div className="flex text-accent gap-1">
-                    {Array.from({ length: rev.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-accent" />
-                    ))}
-                  </div>
+          {/* Column 1: Editorial Section Header */}
+          <div className="text-left space-y-4 lg:pr-8">
+            <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
+              06 // CLIENT COMMENDATIONS
+            </span>
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+              CLIENT AUDITS
+            </h2>
+            <div className="h-[2px] bg-accent/25 w-16 mt-4" />
+            <p className="text-xs text-luxury-muted font-light leading-relaxed font-manrope pt-4">
+              Real testimonials from verified global curators. Discover why LUXORA is the premier choice for minimal structured apparel.
+            </p>
+          </div>
 
-                  {/* Comment */}
-                  <p className="font-syne text-lg md:text-2xl font-medium tracking-wide text-white leading-relaxed max-w-3xl italic">
-                    "{rev.comment}"
-                  </p>
+          {/* Columns 2-3: Testimonial Carousel */}
+          <div className="lg:col-span-2 p-8 md:p-12 rounded-[2rem] bg-luxury-card/30 border border-luxury-border/80 relative shadow-premium overflow-hidden">
+            {/* Giant background quote icon mark */}
+            <div className="absolute -top-6 -right-6 text-[12rem] font-syne font-black text-white/[0.02] leading-none select-none">
+              “
+            </div>
 
-                  {/* Author Meta */}
-                  <div className="flex items-center gap-3 mt-4">
-                    <img
-                      src={rev.avatar}
-                      alt={rev.user}
-                      className="w-12 h-12 rounded-full object-cover border border-luxury-border shadow-premium"
-                    />
-                    <div className="text-left">
-                      <span className="block font-syne font-bold text-xs tracking-widest text-white uppercase">
-                        {rev.user}
-                      </span>
-                      <span className="block text-[10px] text-accent font-semibold tracking-wider">
-                        VERIFIED ACQUISITION
-                      </span>
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={40}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 6000,
+                disableOnInteraction: false,
+              }}
+              pagination={{ 
+                clickable: true,
+                dynamicBullets: true,
+                el: '.swiper-pagination-reviews-container'
+              }}
+              className="testimonial-swiper"
+            >
+              {reviews.map((rev) => (
+                <SwiperSlide key={rev.id}>
+                  <div className="flex flex-col gap-6">
+                    {/* Stars */}
+                    <div className="flex text-accent gap-1">
+                      {Array.from({ length: rev.rating }).map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                      ))}
+                    </div>
+
+                    {/* Review text */}
+                    <p className="font-syne text-base md:text-xl font-medium tracking-wide text-white leading-relaxed italic pr-6 select-text">
+                      "{rev.comment}"
+                    </p>
+
+                    {/* Author Meta */}
+                    <div className="flex items-center gap-3.5 border-t border-luxury-border/60 pt-5 mt-2">
+                      <img
+                        src={rev.avatar}
+                        alt={rev.user}
+                        className="w-11 h-11 rounded-full object-cover border border-luxury-border/60 shadow-premium"
+                        loading="lazy"
+                      />
+                      <div>
+                        <span className="block font-syne font-bold text-xs tracking-widest text-white uppercase">
+                          {rev.user}
+                        </span>
+                        <span className="block text-[8px] text-accent font-extrabold tracking-wider mt-0.5">
+                          VERIFIED ACQUISITION // {rev.productName.toUpperCase()}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Custom Pagination Bullet Container */}
+            <div className="swiper-pagination-reviews-container flex justify-start mt-8" />
+          </div>
+
         </div>
 
       </div>

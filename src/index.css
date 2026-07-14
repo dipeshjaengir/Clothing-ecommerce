@@ -104,3 +104,22 @@ html.lenis, html.lenis body {
   width: 20px !important;
   border-radius: 4px !important;
 }
+
+/* Premium Vignette Overlay */
+.bg-radial-vignette {
+  background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Accessibility Focus Rings */
+button:focus-visible, 
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C9A227 !important;
+  outline-offset: 3px;
+}
+
+/* GPU Accelerated transitions */
+.page-transition-wrapper {
+  will-change: opacity, transform;
+}

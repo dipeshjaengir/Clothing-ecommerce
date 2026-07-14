@@ -1,36 +1,85 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
+import SplitType from 'split-type';
 import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowRight } from 'lucide-react';
+import MagneticButton from '../common/MagneticButton';
 
 const Hero = () => {
   const containerRef = useRef(null);
   const headlineRef = useRef(null);
   const sublineRef = useRef(null);
   const ctaRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
-    // GSAP Stagger Entrance Animation for Hero text
+    // Stagger character reveal on the main title using SplitType + GSAP
+    let splitInstance;
     const ctx = gsap.context(() => {
-      // Split text-like reveal using GSAP y-transforms
-      gsap.fromTo(headlineRef.current, 
-        { y: 80, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.8 }
-      );
+      // Split text into characters
+      splitInstance = new SplitType(headlineRef.current, { types: 'chars' });
       
-      gsap.fromTo(sublineRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 0.6, duration: 1, ease: "power3.out", delay: 1.2 }
+      // Wrap characters in overflow hidden wrapper dynamically in JS
+      splitInstance.chars.forEach(char => {
+        const wrapper = document.createElement('span');
+        wrapper.style.display = 'inline-block';
+        wrapper.style.overflow = 'hidden';
+        wrapper.style.verticalAlign = 'bottom';
+        char.parentNode.insertBefore(wrapper, char);
+        wrapper.appendChild(char);
+      });
+
+      // Animate chars up from overflow wrapper
+      gsap.fromTo(splitInstance.chars,
+        { y: '100%' },
+        { y: '0%', duration: 1.4, ease: "power4.out", stagger: 0.02, delay: 0.5 }
       );
 
-      gsap.fromTo(ctaRef.current,
+      // Subtle float reveal for subline badge
+      gsap.fromTo(sublineRef.current,
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out", delay: 1.5 }
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.1 }
+      );
+
+      // Slide reveal for call to actions
+      gsap.fromTo(ctaRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.3 }
+      );
+
+      // Zoom-out reveal for the background image
+      gsap.fromTo(imageRef.current,
+        { scale: 1.15, opacity: 0 },
+        { scale: 1.05, opacity: 0.45, duration: 2.2, ease: "power2.out" }
       );
     }, containerRef);
 
-    return () => ctx.revert(); // clean up GSAP context on unmount
+    // Mouse Move Parallax Handler
+    const handleMouseMove = (e) => {
+      if (!containerRef.current || !imageRef.current) return;
+      const { clientX, clientY } = e;
+      const { width, height } = containerRef.current.getBoundingClientRect();
+      
+      // Compute mouse ratio from center (-0.5 to 0.5)
+      const moveX = (clientX / width - 0.5) * 25; // 25px max movement
+      const moveY = (clientY / height - 0.5) * 25;
+
+      gsap.to(imageRef.current, {
+        x: moveX,
+        y: moveY,
+        duration: 1.2,
+        ease: "power2.out"
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      ctx.revert();
+      if (splitInstance) splitInstance.revert();
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const handleScrollDown = () => {
@@ -46,14 +95,17 @@ const Hero = () => {
       className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black select-none"
     >
       {/* Background Image Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
+          ref={imageRef}
           src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop"
           alt="LUXORA Haute Couture background"
-          className="w-full h-full object-cover object-center opacity-45 scale-105"
+          className="w-full h-full object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg via-transparent to-black/70" />
-        <div className="absolute inset-0 bg-black/20" />
+        {/* Soft Vignette and Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-70 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-black/35" />
       </div>
 
       {/* Hero Content */}
@@ -61,18 +113,18 @@ const Hero = () => {
         {/* Subtitle Badge */}
         <div 
           ref={sublineRef}
-          className="mb-6"
+          className="mb-6 opacity-0"
         >
-          <span className="px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase inline-block">
+          <span className="px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase inline-block font-syne">
             ARCHIVE COLLECTION 2026
           </span>
         </div>
 
         {/* Primary Luxury Headline */}
-        <div className="overflow-hidden mb-8 py-2">
+        <div className="mb-10 py-1 select-text">
           <h1 
             ref={headlineRef}
-            className="font-syne text-5xl md:text-7xl lg:text-9xl font-extrabold tracking-widest text-white leading-none uppercase"
+            className="font-syne text-5xl md:text-8xl lg:text-9xl font-extrabold tracking-widest text-white leading-none uppercase"
           >
             SILHOUETTES<br />
             <span className="text-gradient-gold">REFINED</span>
@@ -82,21 +134,27 @@ const Hero = () => {
         {/* Call to Actions */}
         <div 
           ref={ctaRef}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center opacity-0"
         >
-          <Link
-            to="/shop"
-            className="px-8 py-4 bg-accent text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent-light transition-all duration-300 flex items-center gap-2 group shadow-gold"
-          >
-            ACQUIRE GARMENTS <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <MagneticButton>
+            <Link
+              to="/shop"
+              className="px-8 py-4 bg-accent text-black font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-accent-light transition-all duration-300 flex items-center gap-2 group shadow-gold relative overflow-hidden"
+            >
+              {/* Shimmer sweep effect in markup */}
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+              ACQUIRE GARMENTS <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </MagneticButton>
           
-          <Link
-            to="/collections"
-            className="px-8 py-4 bg-transparent text-white border border-white/20 font-syne font-bold text-xs tracking-widest rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-          >
-            VIEW EDITORIAL
-          </Link>
+          <MagneticButton>
+            <Link
+              to="/collections"
+              className="px-8 py-4 bg-transparent text-white border border-white/20 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+            >
+              VIEW EDITORIAL
+            </Link>
+          </MagneticButton>
         </div>
       </div>
 

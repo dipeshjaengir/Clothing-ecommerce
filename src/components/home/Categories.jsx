@@ -38,54 +38,59 @@ const Categories = () => {
   ];
 
   return (
-    <section className="py-24 bg-luxury-bg border-b border-luxury-border/60">
+    <section className="py-32 bg-luxury-bg border-b border-luxury-border/60">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="mb-16">
-          <span className="text-xs font-syne font-extrabold tracking-widest text-accent uppercase block mb-2">
+        <div className="mb-20">
+          <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
             04 // CURATED CATEGORIES
           </span>
-          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase">
+          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
             SHOP BY CLASSIFICATION
           </h2>
         </div>
 
         {/* Masonry Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px] md:auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[280px] md:auto-rows-[340px]">
           {categoriesList.map((cat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: idx * 0.1 }}
-              className={`group relative overflow-hidden rounded-3xl bg-luxury-card border border-luxury-border/60 ${cat.gridClass}`}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
+              className={`group relative overflow-hidden rounded-[2rem] bg-luxury-card border border-luxury-border/60 hover:border-accent/30 transition-colors duration-500 ${cat.gridClass}`}
             >
-              {/* Image */}
+              {/* Image with zoom and vignette */}
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="w-full h-full object-cover transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 opacity-60 group-hover:opacity-75"
+                className="w-full h-full object-cover transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 opacity-55 group-hover:opacity-70"
+                loading="lazy"
               />
               
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Radial gradient mask for text contrast */}
+              <div className="absolute inset-0 bg-radial-vignette opacity-80 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-90" />
+              
+              {/* Gold border accent inside the card on hover */}
+              <div className="absolute inset-4 rounded-[1.5rem] border border-accent/0 group-hover:border-accent/15 transition-all duration-500 pointer-events-none" />
 
               {/* Text / Actions Overlay */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-end items-start">
-                <span className="text-[10px] font-bold tracking-widest text-accent mb-1">
+              <div className="absolute inset-0 p-8 flex flex-col justify-end items-start z-10">
+                <span className="text-[9px] font-bold tracking-[0.2em] text-accent mb-2 font-syne">
                   {cat.label}
                 </span>
-                <h3 className="font-syne font-bold text-xl md:text-2xl text-white tracking-widest uppercase">
+                <h3 className="font-syne font-bold text-2xl md:text-3xl text-white tracking-widest uppercase">
                   {cat.name}
                 </h3>
                 
                 <Link
                   to={`/shop?category=${cat.name}`}
-                  className="mt-4 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-white/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent"
+                  className="mt-5 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-white/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent group"
                 >
-                  DISCOVER ARCHIVE <ArrowUpRight className="w-3.5 h-3.5" />
+                  DISCOVER ARCHIVE 
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
 
