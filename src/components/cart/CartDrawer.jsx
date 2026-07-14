@@ -44,7 +44,7 @@ const CartDrawer = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-luxury-bg border-l border-luxury-border flex flex-col justify-between shadow-premium"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-luxury-card border-l border-luxury-border flex flex-col justify-between shadow-premium"
           >
             {/* Drawer Header */}
             <div className="p-6 border-b border-luxury-border flex justify-between items-center">
@@ -84,7 +84,7 @@ const CartDrawer = () => {
                     {/* Item Details */}
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
-                        <h4 className="font-syne font-bold text-sm text-white tracking-wider pr-6">
+                        <h4 className="font-syne font-bold text-sm text-secondary tracking-wider pr-6">
                           <Link
                             to={`/product/${item.product.id}`}
                             onClick={() => setIsCartOpen(false)}
@@ -144,7 +144,7 @@ const CartDrawer = () => {
                       setIsCartOpen(false);
                       navigate('/shop');
                     }}
-                    className="px-6 py-3 bg-white text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-all duration-300"
+                    className="px-6 py-3 bg-secondary text-primary font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-all duration-300"
                   >
                     SHOP NEW DROPS
                   </button>
@@ -157,7 +157,7 @@ const CartDrawer = () => {
               <div className="p-6 border-t border-luxury-border bg-luxury-card/50 space-y-4">
                 <div className="flex justify-between items-center text-sm font-semibold tracking-wider font-manrope">
                   <span className="text-luxury-muted">SUBTOTAL</span>
-                  <span className="text-lg font-bold text-white font-manrope">${cartSubtotal}</span>
+                  <span className="text-lg font-bold text-secondary font-manrope">${cartSubtotal}</span>
                 </div>
                 <p className="text-[11px] text-luxury-muted font-manrope">Shipping fees, taxes, and promotional codes computed at checkout.</p>
                 <div className="grid grid-cols-1 gap-2 pt-2">
@@ -169,7 +169,7 @@ const CartDrawer = () => {
                   </button>
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="w-full py-3 bg-transparent text-white font-syne font-bold text-xs tracking-widest rounded-full hover:text-accent transition-colors"
+                    className="w-full py-3 bg-transparent text-secondary font-syne font-bold text-xs tracking-widest rounded-full hover:text-accent transition-colors"
                   >
                     CONTINUE BROWSING
                   </button>

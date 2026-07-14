@@ -25,7 +25,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-36 bg-[#030303] border-b border-luxury-border/60 relative overflow-hidden">
+    <section className="py-36 bg-primary border-b border-luxury-border/60 relative overflow-hidden">
       {/* Soft background vignette */}
       <div className="absolute inset-0 bg-radial-vignette opacity-50 pointer-events-none" />
 
@@ -35,7 +35,7 @@ const Newsletter = () => {
         <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-4">
           08 // MEMBER ACCESS
         </span>
-        <h2 className="font-syne text-4xl md:text-5xl lg:text-6xl font-black tracking-wider text-white uppercase mb-6 leading-none">
+        <h2 className="font-syne text-4xl md:text-5xl lg:text-6xl font-black tracking-wider text-secondary uppercase mb-6 leading-none">
           JOIN THE LUXORA COLLECTIVE
         </h2>
         <p className="text-xs md:text-sm text-luxury-muted font-manrope font-light max-w-xl mb-12 leading-relaxed">
@@ -48,7 +48,7 @@ const Newsletter = () => {
             type="email"
             name="email"
             placeholder="ENTER YOUR EMAIL..."
-            className="w-full sm:flex-grow px-6 py-4 rounded-full bg-luxury-card border border-luxury-border/80 text-xs tracking-wider outline-none text-white focus:border-accent transition-colors font-manrope placeholder-luxury-muted font-light"
+            className="w-full sm:flex-grow px-6 py-4 rounded-full bg-luxury-card border border-luxury-border/80 text-xs tracking-wider outline-none text-secondary focus:border-accent transition-colors font-manrope placeholder-luxury-muted font-light"
             required
             aria-label="Email address for collective signup"
           />
@@ -56,7 +56,7 @@ const Newsletter = () => {
             <MagneticButton className="w-full sm:w-auto">
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-white text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-colors duration-300 flex items-center justify-center gap-2 group relative overflow-hidden shadow-premium"
+                className="w-full px-8 py-4 bg-secondary text-primary font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-colors duration-300 flex items-center justify-center gap-2 group relative overflow-hidden shadow-premium"
               >
                 {/* Shimmer effect */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:animate-shimmer" />

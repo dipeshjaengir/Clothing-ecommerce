@@ -20,7 +20,7 @@ const FeaturedCollection = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               01 // THE EDITORIAL SELECTS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
               FEATURED COLLECTION
             </h2>
           </div>

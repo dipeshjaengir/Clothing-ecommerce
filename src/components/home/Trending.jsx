@@ -18,7 +18,7 @@ const Trending = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               03 // HIGH CONVERSION SELECTIONS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
               TRENDING PRODUCTS
             </h2>
           </div>
@@ -40,7 +40,7 @@ const Trending = () => {
             
             <div>
               <span className="text-[9px] font-bold tracking-widest text-accent uppercase font-syne block mb-2">THE CONCEPT</span>
-              <h3 className="font-syne text-2xl font-extrabold tracking-wide text-white uppercase leading-snug">
+              <h3 className="font-syne text-2xl font-extrabold tracking-wide text-secondary uppercase leading-snug">
                 MODERN<br />
                 ESSENTIALS<br />
                 ARCHIVE
@@ -54,7 +54,7 @@ const Trending = () => {
               </p>
               <Link 
                 to="/shop" 
-                className="text-[10px] font-syne font-bold tracking-widest text-white hover:text-accent flex items-center gap-1.5 transition-colors"
+                className="text-[10px] font-syne font-bold tracking-widest text-secondary hover:text-accent flex items-center gap-1.5 transition-colors"
               >
                 BROWSE ARCHIVES <ArrowRight className="w-3.5 h-3.5" />
               </Link>

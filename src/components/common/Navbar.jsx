@@ -24,10 +24,10 @@ const Navbar = () => {
     { name: 'CONTACT', path: '/contact' },
   ];
 
-  // Scroll effect
+  // Scroll handler to shrink navbar and toggle glassmorphism
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 405) {
+      if (window.scrollY > 40) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -47,21 +47,21 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${
           isScrolled
-            ? 'py-3 bg-luxury-bg/80 backdrop-blur-xl border-b border-luxury-border/60 shadow-premium'
-            : 'py-6 bg-transparent'
+            ? 'py-3.5 bg-luxury-bg/85 backdrop-blur-xl border-b border-accent/15 shadow-premium'
+            : 'py-6 bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative">
           
           {/* Left Navigation Links - Desktop Only */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-syne font-bold tracking-[0.2em] relative">
+          <nav className="hidden lg:flex items-center gap-10 text-xs font-syne font-bold tracking-[0.2em] relative">
             {navLinks.map((link) => {
               const isActive = pathname === link.path;
               return (
                 <Link 
                   key={link.name} 
                   to={link.path} 
-                  className="relative py-2 text-white/80 hover:text-accent transition-colors duration-300 group"
+                  className="relative py-2 text-secondary/80 hover:text-accent transition-colors duration-300 group"
                 >
                   <span>{link.name}</span>
                   {/* Underline expansion on hover */}
@@ -83,15 +83,15 @@ const Navbar = () => {
           {/* Mobile Menu Icon - Mobile Only */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="lg:hidden text-white hover:text-accent transition-colors focus:outline-none p-1"
+            className="lg:hidden text-secondary hover:text-accent transition-colors focus:outline-none p-1.5"
             aria-label="Open mobile menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
 
           {/* Central Monogram Brand Logo */}
           <Link to="/" className="flex flex-col items-center select-none absolute left-1/2 -translate-x-1/2">
-            <span className="font-syne text-2xl md:text-3xl font-extrabold tracking-[0.3em] text-white">
+            <span className="font-syne text-2xl md:text-3xl font-extrabold tracking-[0.3em] text-[#F8F8F8]">
               LUXORA
             </span>
             <span className="text-[7px] tracking-[0.55em] text-accent font-bold -mt-0.5 hidden md:block">
@@ -100,11 +100,11 @@ const Navbar = () => {
           </Link>
 
           {/* Right Action Icons */}
-          <div className="flex items-center gap-4 md:gap-6 ml-auto">
+          <div className="flex items-center gap-3.5 md:gap-5 ml-auto">
             {/* Search */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="text-white hover:text-accent transition-colors p-2 rounded-full hover:bg-white/5 transition-all duration-300"
+              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300"
               aria-label="Open search archive"
             >
               <Search className="w-4 h-4" />
@@ -113,7 +113,7 @@ const Navbar = () => {
             {/* Profile Account */}
             <Link
               to="/login"
-              className="text-white hover:text-accent transition-colors p-2 rounded-full hover:bg-white/5 transition-all duration-300 hidden sm:block"
+              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 hidden sm:block"
               aria-label="View user profile"
             >
               <User className="w-4 h-4" />
@@ -122,7 +122,7 @@ const Navbar = () => {
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="text-white hover:text-accent transition-colors p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
+              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
               aria-label="View wishlist folder"
             >
               <Heart className="w-4 h-4" />
@@ -145,7 +145,7 @@ const Navbar = () => {
             {/* Cart Bag */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="text-white hover:text-accent transition-colors p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
+              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
               aria-label="Open checkout drawer"
             >
               <ShoppingBag className="w-4 h-4" />
@@ -157,7 +157,7 @@ const Navbar = () => {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.5, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                    className="absolute top-0 right-0 w-4 h-4 bg-white text-black text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
+                    className="absolute top-0 right-0 w-4 h-4 bg-secondary text-black text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
                   >
                     {cartCount}
                   </motion.span>
@@ -176,14 +176,14 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-10%' }}
             transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.55 }}
-            className="fixed inset-0 z-50 bg-luxury-bg/95 backdrop-blur-xl flex flex-col justify-between p-8"
+            className="fixed inset-0 z-50 bg-[#0B0B0B]/95 backdrop-blur-xl flex flex-col justify-between p-8"
           >
             {/* Header */}
             <div className="flex justify-between items-center border-b border-luxury-border/60 pb-6">
-              <span className="font-syne text-xl font-bold tracking-widest text-white">LUXORA</span>
+              <span className="font-syne text-xl font-bold tracking-widest text-secondary">LUXORA</span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-white hover:text-accent transition-colors focus:outline-none"
+                className="p-2 text-secondary hover:text-accent transition-colors focus:outline-none"
                 aria-label="Close mobile menu"
               >
                 <X className="w-6 h-6" />
@@ -201,7 +201,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.path}
-                    className="font-syne text-3xl font-bold tracking-widest text-white hover:text-accent transition-colors py-2 inline-block"
+                    className="font-syne text-3xl font-bold tracking-widest text-secondary hover:text-accent transition-colors py-2 inline-block"
                   >
                     {link.name}
                   </Link>

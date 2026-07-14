@@ -24,7 +24,7 @@ const NewArrivals = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               02 // RECENT RELEASES
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
               NEW ARRIVALS
             </h2>
           </div>
@@ -32,13 +32,13 @@ const NewArrivals = () => {
           {/* Custom Navigation Controls */}
           <div className="flex gap-2">
             <button 
-              className="swiper-prev-custom p-3.5 rounded-full border border-luxury-border hover:border-accent text-white hover:text-accent transition-colors duration-300 shadow-premium focus:outline-none"
+              className="swiper-prev-custom p-3.5 rounded-full border border-luxury-border hover:border-accent text-secondary hover:text-accent transition-colors duration-300 shadow-premium focus:outline-none"
               aria-label="Previous slide"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <button 
-              className="swiper-next-custom p-3.5 rounded-full border border-luxury-border hover:border-accent text-white hover:text-accent transition-colors duration-300 shadow-premium focus:outline-none"
+              className="swiper-next-custom p-3.5 rounded-full border border-luxury-border hover:border-accent text-secondary hover:text-accent transition-colors duration-300 shadow-premium focus:outline-none"
               aria-label="Next slide"
             >
               <ArrowRight className="w-4 h-4" />

@@ -46,7 +46,7 @@ const Categories = () => {
           <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
             04 // CURATED CATEGORIES
           </span>
-          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
             SHOP BY CLASSIFICATION
           </h2>
         </div>
@@ -81,13 +81,13 @@ const Categories = () => {
                 <span className="text-[9px] font-bold tracking-[0.2em] text-accent mb-2 font-syne">
                   {cat.label}
                 </span>
-                <h3 className="font-syne font-bold text-2xl md:text-3xl text-white tracking-widest uppercase">
+                <h3 className="font-syne font-bold text-2xl md:text-3xl text-secondary tracking-widest uppercase">
                   {cat.name}
                 </h3>
                 
                 <Link
                   to={`/shop?category=${cat.name}`}
-                  className="mt-5 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-white/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent group"
+                  className="mt-5 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-secondary/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent group"
                 >
                   DISCOVER ARCHIVE 
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

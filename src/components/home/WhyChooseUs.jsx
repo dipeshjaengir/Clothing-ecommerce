@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
           <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
             05 // THE CLIENT CHARTER
           </span>
-          <h2 className="font-syne text-3xl md:text-4xl font-black tracking-wider text-white uppercase leading-none">
+          <h2 className="font-syne text-3xl md:text-4xl font-black tracking-wider text-secondary uppercase leading-none">
             WHY LUXORA COUTURE
           </h2>
           <div className="h-[2px] bg-accent/25 w-16 mx-auto mt-4" />
@@ -63,7 +63,7 @@ const WhyChooseUs = () => {
                 {card.icon}
               </motion.div>
               
-              <h3 className="font-syne font-bold text-xs tracking-widest text-white uppercase">
+              <h3 className="font-syne font-bold text-xs tracking-widest text-secondary uppercase">
                 {card.title}
               </h3>
               

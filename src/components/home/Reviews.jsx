@@ -21,7 +21,7 @@ const Reviews = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               06 // CLIENT COMMENDATIONS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-white uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
               CLIENT AUDITS
             </h2>
             <div className="h-[2px] bg-accent/25 w-16 mt-4" />
@@ -64,7 +64,7 @@ const Reviews = () => {
                     </div>
 
                     {/* Review text */}
-                    <p className="font-syne text-base md:text-xl font-medium tracking-wide text-white leading-relaxed italic pr-6 select-text">
+                    <p className="font-syne text-base md:text-xl font-medium tracking-wide text-secondary leading-relaxed italic pr-6 select-text">
                       "{rev.comment}"
                     </p>
 
@@ -77,7 +77,7 @@ const Reviews = () => {
                         loading="lazy"
                       />
                       <div>
-                        <span className="block font-syne font-bold text-xs tracking-widest text-white uppercase">
+                        <span className="block font-syne font-bold text-xs tracking-widest text-secondary uppercase">
                           {rev.user}
                         </span>
                         <span className="block text-[8px] text-accent font-extrabold tracking-wider mt-0.5">

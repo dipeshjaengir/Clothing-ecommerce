@@ -8,19 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#000000",
-        secondary: "#FFFFFF",
+        primary: "#0B0B0B",
+        secondary: "#F8F8F8",
         accent: {
           DEFAULT: "#C9A227", // Luxury Gold
           light: "#DFBA43",
           dark: "#A38018",
         },
         luxury: {
-          bg: "#080808",
-          card: "#121212",
-          border: "#1E1E1E",
-          muted: "#8E8E93",
-          hover: "#1A1A1A",
+          bg: "#0B0B0B",
+          card: "#161616",
+          border: "#242424",
+          muted: "#9A9A9A",
+          hover: "#222222",
         }
       },
       fontFamily: {
@@ -33,9 +33,9 @@ export default {
         widest: "0.3em",
       },
       boxShadow: {
-        'premium': '0 10px 30px -10px rgba(0, 0, 0, 0.7)',
-        'gold': '0 4px 20px -2px rgba(201, 162, 39, 0.2)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'premium': '0 15px 40px -15px rgba(0, 0, 0, 0.9)',
+        'gold': '0 4px 20px -2px rgba(201, 162, 39, 0.15)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
       },
       backdropBlur: {
         'xs': '2px',
@@ -46,7 +46,7 @@ export default {
         }
       },
       animation: {
-        shimmer: 'shimmer 1.6s ease-in-out infinite',
+        shimmer: 'shimmer 1.8s ease-in-out infinite',
       }
     },
   },
