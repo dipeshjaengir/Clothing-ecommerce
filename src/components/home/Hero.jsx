@@ -16,8 +16,7 @@ const Hero = () => {
   const imageRef = useRef(null);
   const shapesRef = useRef(null);
 
-  // High-resolution Unsplash editorial fashion male model looking sideways in a beige luxury coat
-  const heroModelUrl = "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?q=80&w=800&auto=format&fit=crop";
+  const heroModelUrl = "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800&auto=format&fit=crop";
 
   useEffect(() => {
     let splitInstance;
