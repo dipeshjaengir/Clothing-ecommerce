@@ -16,10 +16,10 @@ const Trending = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
           <div>
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
-              03 // HIGH CONVERSION SELECTIONS
+              03.5 // CLIENT SELECTIONS
             </span>
             <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-primary uppercase leading-none">
-              TRENDING PRODUCTS
+              BEST SELLERS
             </h2>
           </div>
           <Link

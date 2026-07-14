@@ -26,6 +26,8 @@ export default {
       fontFamily: {
         syne: ["Syne", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
+        cormorant: ["Cormorant Garamond", "serif"],
       },
       letterSpacing: {
         editorial: "0.1em",

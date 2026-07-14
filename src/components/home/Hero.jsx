@@ -19,46 +19,46 @@ const Hero = () => {
   useEffect(() => {
     let splitInstance;
     const ctx = gsap.context(() => {
-      // Split text into characters
-      splitInstance = new SplitType(headlineRef.current, { types: 'chars' });
+      // Split text into lines/words
+      splitInstance = new SplitType(headlineRef.current, { types: 'words' });
       
-      // Wrap characters in overflow hidden wrapper
-      splitInstance.chars.forEach(char => {
+      // Wrap words in overflow hidden wrapper
+      splitInstance.words.forEach(word => {
         const wrapper = document.createElement('span');
         wrapper.style.display = 'inline-block';
         wrapper.style.overflow = 'hidden';
         wrapper.style.verticalAlign = 'bottom';
-        char.parentNode.insertBefore(wrapper, char);
-        wrapper.appendChild(char);
+        word.parentNode.insertBefore(wrapper, word);
+        wrapper.appendChild(word);
       });
 
-      // Animate chars up from overflow wrapper
-      gsap.fromTo(splitInstance.chars,
+      // Animate words up from overflow wrapper
+      gsap.fromTo(splitInstance.words,
         { y: '110%' },
-        { y: '0%', duration: 1.4, ease: "power4.out", stagger: 0.02, delay: 0.5 }
+        { y: '0%', duration: 1.4, ease: "power4.out", stagger: 0.05, delay: 0.4 }
       );
 
       // Subtle float reveal for subline badge
       gsap.fromTo(sublineRef.current,
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.9 }
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.8 }
       );
 
       // Float reveal for subline description
       gsap.fromTo(descRef.current,
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.1 }
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.0 }
       );
 
       // Slide reveal for call to actions
       gsap.fromTo(ctaRef.current,
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.3 }
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.2 }
       );
 
       // Fade up reveal for the model image card
       gsap.fromTo(imageRef.current,
-        { y: 50, scale: 1.05, opacity: 0 },
+        { y: 50, scale: 1.03, opacity: 0 },
         { y: 0, scale: 1, opacity: 1, duration: 1.8, ease: "power4.out", delay: 0.4 }
       );
     }, containerRef);
@@ -75,8 +75,8 @@ const Hero = () => {
 
       if (imageRef.current) {
         gsap.to(imageRef.current, {
-          x: ratioX * 12,
-          y: ratioY * 12,
+          x: ratioX * 10,
+          y: ratioY * 10,
           duration: 1.5,
           ease: "power2.out"
         });
@@ -84,8 +84,8 @@ const Hero = () => {
 
       if (shapesRef.current) {
         gsap.to(shapesRef.current.children, {
-          x: (idx) => ratioX * (20 + idx * 15),
-          y: (idx) => ratioY * (20 + idx * 15),
+          x: (idx) => ratioX * (15 + idx * 10),
+          y: (idx) => ratioY * (15 + idx * 10),
           duration: 2,
           ease: "power2.out",
           stagger: 0.05
@@ -103,7 +103,7 @@ const Hero = () => {
   }, []);
 
   const handleScrollDown = () => {
-    const nextSection = document.getElementById('featured-collection');
+    const nextSection = document.getElementById('new-arrivals');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -112,53 +112,61 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-screen flex items-center bg-[#F8F7F3] overflow-hidden select-none py-20 lg:py-0"
+      className="relative w-full min-h-screen flex items-center bg-[#F8F7F3] overflow-hidden select-none py-24 lg:py-0"
     >
-      {/* 1. Grain Noise Overlay */}
+      {/* 1. Palm Leaf Shadow Background Layer (Replicates the left shadow in the reference image) */}
       <div 
-        className="absolute inset-0 z-10 pointer-events-none opacity-[0.025]"
+        className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-0 pointer-events-none opacity-[0.06] bg-cover bg-left-top mix-blend-multiply"
+        style={{
+          backgroundImage: `url("https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=80&w=1200&auto=format&fit=crop")`
+        }}
+      />
+
+      {/* 2. Soft Grain Texture Overlay */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none opacity-[0.02]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
       />
 
-      {/* 2. Floating Ambient Shapes (Luxury Soft Blur Gradient Circles) */}
+      {/* 3. Floating Ambient Shapes */}
       <div ref={shapesRef} className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-accent/5 rounded-full blur-[100px] animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] bg-accent/10 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-10 w-[280px] h-[280px] bg-luxury-hover rounded-full blur-[80px]" />
       </div>
 
       {/* Main Grid Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[90vh]">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[90vh] pt-12 lg:pt-0">
         
         {/* Left Side (55% Width equivalent) */}
-        <div className="lg:col-span-7 text-left flex flex-col items-start justify-center pr-0 lg:pr-8 py-8 lg:py-0">
+        <div className="lg:col-span-7 text-left flex flex-col items-start justify-center pr-0 lg:pr-12">
           
           {/* Subtitle Badge */}
           <div 
             ref={sublineRef}
-            className="mb-5 opacity-0"
+            className="mb-6 opacity-0"
           >
             <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#B68D40] uppercase font-syne">
               NEW COLLECTION 2026
             </span>
           </div>
 
-          {/* Primary Luxury Headline with Clamp responsive sizing */}
-          <div className="mb-6 select-text max-w-2xl">
+          {/* Primary Luxury Serif Headline (Exactly as reference layout) */}
+          <div className="mb-6 select-text max-w-xl">
             <h1 
               ref={headlineRef}
-              className="font-syne text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold tracking-wide text-[#111111] leading-[1.08] uppercase"
+              className="font-playfair text-[clamp(2.5rem,5.5vw,4.5rem)] font-normal tracking-wide text-[#111111] leading-[1.1] uppercase"
             >
-              Crafted For Modern Luxury.
+              Crafted for<br />
+              <span className="font-semibold tracking-wider">Modern Luxury<span className="text-[#B68D40]">.</span></span>
             </h1>
           </div>
 
           {/* Description Subheading */}
           <p 
             ref={descRef}
-            className="text-xs sm:text-sm md:text-base text-[#6D6D6D] font-light leading-relaxed font-manrope max-w-md mb-10 opacity-0"
+            className="text-xs sm:text-sm text-luxury-muted font-light leading-relaxed font-manrope max-w-md mb-10 opacity-0"
           >
             Timeless silhouettes designed for everyday elegance.
           </p>
@@ -166,7 +174,7 @@ const Hero = () => {
           {/* Call to Actions */}
           <div 
             ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-5 items-stretch opacity-0 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-4 items-stretch opacity-0 w-full sm:w-auto"
           >
             <MagneticButton>
               <Link
@@ -191,20 +199,37 @@ const Hero = () => {
         </div>
 
         {/* Right Side - Full-Height Premium Model (45% Width equivalent) */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end items-center h-full w-full relative">
+        <div className="lg:col-span-5 flex justify-center lg:justify-end items-center h-full w-full relative pt-8 lg:pt-0">
           <div 
             ref={imageRef}
-            className="relative w-full max-w-[420px] aspect-[3/4.5] overflow-hidden rounded-[2.5rem] bg-luxury-card border border-luxury-border shadow-premium opacity-0 group"
+            className="relative w-full max-w-[420px] aspect-[3/4.3] overflow-hidden rounded-[2.5rem] bg-luxury-card border border-luxury-border shadow-premium opacity-0 group"
           >
             <LuxuryImage
-              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1620012253295-c05518e99309?q=80&w=800&auto=format&fit=crop"
               alt="LUXORA Campaign Model"
-              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1500ms]"
+              className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-[1500ms]"
             />
             
             {/* Blending Gradients over the model block edges */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F3]/20 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-radial-vignette opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F3]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-radial-vignette opacity-15 pointer-events-none" />
+          </div>
+
+          {/* Floating Watch Campaign Film Badge (Exactly as position in reference) */}
+          <div className="absolute left-[-20px] lg:left-[-40px] top-[45%] transform -translate-y-1/2 flex items-center gap-3.5 z-30 select-none cursor-pointer group">
+            <div className="w-11 h-11 rounded-full bg-white shadow-premium flex items-center justify-center text-[#B68D40] group-hover:scale-110 transition-transform duration-300">
+              <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <div className="text-left font-syne select-none">
+              <span className="block text-[8px] font-extrabold tracking-[0.2em] text-[#111111] uppercase leading-tight">
+                WATCH
+              </span>
+              <span className="block text-[8px] font-bold tracking-[0.2em] text-[#6D6D6D]/80 uppercase leading-tight">
+                CAMPAIGN FILM
+              </span>
+            </div>
           </div>
         </div>
 
@@ -229,7 +254,7 @@ const Hero = () => {
           />
         </div>
         <span className="text-[9px] tracking-widest text-luxury-muted font-bold group-hover:text-accent transition-colors duration-300 uppercase">
-          SCROLL TO EXPLORE
+          SCROLL TO DISCOVER
         </span>
       </div>
 
