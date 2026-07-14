@@ -33,7 +33,7 @@ const Lookbook = () => {
   ];
 
   return (
-    <section className="py-36 bg-luxury-bg border-b border-luxury-border/60 overflow-hidden">
+    <section id="lookbook" className="py-36 bg-luxury-bg border-b border-luxury-border/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Title */}

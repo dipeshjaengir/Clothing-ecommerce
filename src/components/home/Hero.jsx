@@ -110,6 +110,14 @@ const Hero = () => {
     }
   };
 
+  const handleScrollToLookbook = (e) => {
+    e.preventDefault();
+    const lookbookSection = document.getElementById('lookbook');
+    if (lookbookSection) {
+      lookbookSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       ref={containerRef}
@@ -135,21 +143,22 @@ const Hero = () => {
         {/* Left Side (55% Width equivalent) */}
         <div className="lg:col-span-7 text-left flex flex-col items-start justify-center pr-0 lg:pr-12">
           
-          {/* Subtitle Badge */}
+          {/* Subtitle Badge with horizontal gold divider line (as reference) */}
           <div 
             ref={sublineRef}
-            className="mb-6 opacity-0"
+            className="mb-6 opacity-0 flex items-center gap-4"
           >
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#B68D40] uppercase font-syne">
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#B68D40] uppercase font-syne whitespace-nowrap">
               NEW COLLECTION 2026
             </span>
+            <div className="h-[1px] w-12 bg-[#B68D40]/60" />
           </div>
 
-          {/* Primary Luxury Serif Headline */}
+          {/* Primary Luxury Serif Headline (Exactly as reference title-case styling) */}
           <div className="mb-6 select-text max-w-xl">
             <h1 
               ref={headlineRef}
-              className="font-playfair text-[clamp(2.5rem,5.5vw,4.5rem)] font-normal tracking-wide text-[#111111] leading-[1.1] uppercase"
+              className="font-playfair text-[clamp(2.5rem,5.5vw,4.5rem)] font-normal tracking-wide text-[#111111] leading-[1.1]"
             >
               Crafted for<br />
               <span className="font-semibold tracking-wider">Modern Luxury<span className="text-[#B68D40]">.</span></span>
@@ -180,12 +189,13 @@ const Hero = () => {
             </MagneticButton>
             
             <MagneticButton>
-              <Link
-                to="/collections"
+              <a
+                href="#lookbook"
+                onClick={handleScrollToLookbook}
                 className="px-8 py-4 bg-transparent text-[#111111] border border-black/10 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 flex justify-center items-center"
               >
                 VIEW LOOKBOOK
-              </Link>
+              </a>
             </MagneticButton>
           </div>
 
