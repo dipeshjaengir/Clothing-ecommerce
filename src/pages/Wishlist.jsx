@@ -3,6 +3,7 @@ import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import { Trash2, ShoppingBag, ArrowLeft, Heart } from 'lucide-react';
+import LuxuryImage from '../components/common/LuxuryImage';
 
 const Wishlist = () => {
   const { wishlist, toggleWishlist, clearWishlist } = useWishlist();
@@ -13,7 +14,7 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-luxury-bg text-white font-manrope min-h-screen">
+    <div className="pt-28 pb-24 bg-luxury-bg text-primary font-manrope min-h-screen">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Title */}
@@ -22,7 +23,7 @@ const Wishlist = () => {
             <span className="text-[10px] font-bold tracking-widest text-accent uppercase">
               SAVED SILHOUETTES
             </span>
-            <h1 className="font-syne text-4xl md:text-6xl font-black tracking-wider text-white uppercase mt-2">
+            <h1 className="font-syne text-4xl md:text-6xl font-black tracking-wider text-primary uppercase mt-2">
               MY WISHLIST
             </h1>
           </div>
@@ -49,19 +50,19 @@ const Wishlist = () => {
                   {/* Remove Button */}
                   <button
                     onClick={() => toggleWishlist(product)}
-                    className="absolute top-3 right-3 z-10 p-2 rounded-full bg-black/60 border border-luxury-border backdrop-blur-md text-red-400 hover:text-red-500 transition-colors"
+                    className="absolute top-3 right-3 z-10 p-2 rounded-full bg-luxury-card border border-luxury-border backdrop-blur-md text-red-500 hover:bg-red-500/10 transition-colors shadow-premium"
                     title="Remove from Wishlist"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
 
                   <Link to={`/product/${product.id}`} className="block w-full h-full">
-                    <img
+                    <LuxuryImage
                       src={product.images[0]}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute inset-0 bg-black/[0.01] group-hover:bg-black/[0.05] transition-colors" />
                   </Link>
                 </div>
 
@@ -71,18 +72,18 @@ const Wishlist = () => {
                     {product.category}
                   </span>
                   
-                  <h3 className="font-syne font-bold text-sm text-white tracking-wider flex-grow">
+                  <h3 className="font-syne font-bold text-sm text-primary tracking-wider flex-grow">
                     <Link to={`/product/${product.id}`} className="hover:text-accent transition-colors">
                       {product.name}
                     </Link>
                   </h3>
 
                   <div className="flex justify-between items-center mt-2 border-t border-luxury-border/60 pt-3">
-                    <span className="font-bold text-sm text-white font-manrope">${product.price}</span>
+                    <span className="font-bold text-sm text-primary font-manrope">${product.price}</span>
                     
                     <button
                       onClick={() => handleQuickAdd(product)}
-                      className="px-4 py-2.5 bg-white text-black font-syne font-bold text-[9px] tracking-widest rounded-xl hover:bg-accent hover:text-black transition-colors flex items-center gap-1 shadow-premium"
+                      className="px-4 py-2.5 bg-[#111111] text-[#F8F7F3] font-syne font-bold text-[9px] tracking-widest rounded-xl hover:bg-accent hover:text-white transition-colors flex items-center gap-1 shadow-premium"
                     >
                       <ShoppingBag className="w-3 h-3" /> ADD TO BAG
                     </button>
@@ -101,7 +102,7 @@ const Wishlist = () => {
             </p>
             <Link
               to="/shop"
-              className="px-8 py-4 bg-white text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent transition-all duration-300"
+              className="px-8 py-4 bg-[#111111] text-[#F8F7F3] font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent transition-all duration-300 shadow-premium"
             >
               SHOP NEW DROPS
             </Link>

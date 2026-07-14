@@ -10,7 +10,7 @@ const FeaturedCollection = () => {
   return (
     <section id="featured-collection" className="py-32 bg-luxury-bg border-b border-luxury-border/60 relative">
       {/* Decorative vertical line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/25 via-transparent to-transparent hidden lg:block" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#B68D40]/25 via-transparent to-transparent hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
@@ -20,7 +20,7 @@ const FeaturedCollection = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               01 // THE EDITORIAL SELECTS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-primary uppercase leading-none">
               FEATURED COLLECTION
             </h2>
           </div>

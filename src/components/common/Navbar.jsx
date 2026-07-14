@@ -61,13 +61,13 @@ const Navbar = () => {
                 <Link 
                   key={link.name} 
                   to={link.path} 
-                  className="relative py-2 text-secondary/80 hover:text-accent transition-colors duration-300 group"
+                  className="relative py-2 text-primary/80 hover:text-accent transition-colors duration-300 group"
                 >
                   <span>{link.name}</span>
                   {/* Underline expansion on hover */}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent transition-all duration-300 group-hover:w-full" />
                   
-                  {/* Active sliding pill */}
+                  {/* Active sliding indicator */}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
@@ -83,7 +83,7 @@ const Navbar = () => {
           {/* Mobile Menu Icon - Mobile Only */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="lg:hidden text-secondary hover:text-accent transition-colors focus:outline-none p-1.5"
+            className="lg:hidden text-primary hover:text-accent transition-colors focus:outline-none p-1.5"
             aria-label="Open mobile menu"
           >
             <Menu className="w-5 h-5" />
@@ -91,7 +91,7 @@ const Navbar = () => {
 
           {/* Central Monogram Brand Logo */}
           <Link to="/" className="flex flex-col items-center select-none absolute left-1/2 -translate-x-1/2">
-            <span className="font-syne text-2xl md:text-3xl font-extrabold tracking-[0.3em] text-[#F8F8F8]">
+            <span className="font-syne text-2xl md:text-3xl font-extrabold tracking-[0.3em] text-[#111111]">
               LUXORA
             </span>
             <span className="text-[7px] tracking-[0.55em] text-accent font-bold -mt-0.5 hidden md:block">
@@ -104,7 +104,7 @@ const Navbar = () => {
             {/* Search */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300"
+              className="text-[#111111] hover:text-accent p-2 rounded-full hover:bg-[#111111]/5 transition-all duration-300"
               aria-label="Open search archive"
             >
               <Search className="w-4 h-4" />
@@ -113,7 +113,7 @@ const Navbar = () => {
             {/* Profile Account */}
             <Link
               to="/login"
-              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 hidden sm:block"
+              className="text-[#111111] hover:text-accent p-2 rounded-full hover:bg-[#111111]/5 transition-all duration-300 hidden sm:block"
               aria-label="View user profile"
             >
               <User className="w-4 h-4" />
@@ -122,7 +122,7 @@ const Navbar = () => {
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
+              className="text-[#111111] hover:text-accent p-2 rounded-full hover:bg-[#111111]/5 transition-all duration-300 relative"
               aria-label="View wishlist folder"
             >
               <Heart className="w-4 h-4" />
@@ -134,7 +134,7 @@ const Navbar = () => {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.5, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                    className="absolute top-0 right-0 w-4 h-4 bg-accent text-black text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
+                    className="absolute top-0 right-0 w-4 h-4 bg-accent text-white text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
                   >
                     {wishlist.length}
                   </motion.span>
@@ -145,7 +145,7 @@ const Navbar = () => {
             {/* Cart Bag */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="text-[#F8F8F8] hover:text-accent p-2 rounded-full hover:bg-white/5 transition-all duration-300 relative"
+              className="text-[#111111] hover:text-accent p-2 rounded-full hover:bg-[#111111]/5 transition-all duration-300 relative"
               aria-label="Open checkout drawer"
             >
               <ShoppingBag className="w-4 h-4" />
@@ -157,7 +157,7 @@ const Navbar = () => {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.5, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                    className="absolute top-0 right-0 w-4 h-4 bg-secondary text-black text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
+                    className="absolute top-0 right-0 w-4 h-4 bg-[#111111] text-[#F8F7F3] text-[8px] font-black flex items-center justify-center rounded-full leading-none scale-75"
                   >
                     {cartCount}
                   </motion.span>
@@ -176,14 +176,14 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-10%' }}
             transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.55 }}
-            className="fixed inset-0 z-50 bg-[#0B0B0B]/95 backdrop-blur-xl flex flex-col justify-between p-8"
+            className="fixed inset-0 z-50 bg-[#F8F7F3]/98 backdrop-blur-xl flex flex-col justify-between p-8"
           >
             {/* Header */}
             <div className="flex justify-between items-center border-b border-luxury-border/60 pb-6">
-              <span className="font-syne text-xl font-bold tracking-widest text-secondary">LUXORA</span>
+              <span className="font-syne text-xl font-bold tracking-widest text-primary">LUXORA</span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-secondary hover:text-accent transition-colors focus:outline-none"
+                className="p-2 text-primary hover:text-accent transition-colors focus:outline-none"
                 aria-label="Close mobile menu"
               >
                 <X className="w-6 h-6" />
@@ -201,7 +201,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.path}
-                    className="font-syne text-3xl font-bold tracking-widest text-secondary hover:text-accent transition-colors py-2 inline-block"
+                    className="font-syne text-3xl font-bold tracking-widest text-primary hover:text-accent transition-colors py-2 inline-block"
                   >
                     {link.name}
                   </Link>

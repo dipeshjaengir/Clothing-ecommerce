@@ -10,9 +10,9 @@ const Footer = () => {
     if (email) {
       toast.success('Thank you for subscribing to LUXORA Journal.', {
         style: {
-          background: '#121212',
-          color: '#FFFFFF',
-          border: '1px solid #C9A227',
+          background: '#FFFFFF',
+          color: '#111111',
+          border: '1px solid #B68D40',
           fontFamily: 'Manrope',
         },
       });
@@ -21,7 +21,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary border-t border-luxury-border/60 text-secondary font-manrope">
+    <footer className="bg-luxury-hover border-t border-luxury-border text-primary font-manrope">
       
       {/* Upper Grid Layout */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-10">
@@ -29,7 +29,7 @@ const Footer = () => {
         {/* Brand Manifesto */}
         <div className="space-y-6 lg:pr-8">
           <Link to="/" className="inline-block" aria-label="LUXORA Home">
-            <span className="font-syne text-2xl font-black tracking-[0.25em] text-secondary">LUXORA</span>
+            <span className="font-syne text-2xl font-black tracking-[0.25em] text-[#111111]">LUXORA</span>
           </Link>
           <p className="text-xs text-luxury-muted leading-relaxed tracking-wide font-light">
             Inspired by architectural minimalism, refined silhouettes, and artisanal tailoring. Crafting modern luxury essentials for the contemporary curator.
@@ -74,19 +74,19 @@ const Footer = () => {
           </h4>
           <ul className="space-y-3.5 text-xs tracking-wider text-luxury-muted font-manrope">
             <li>
-              <Link to="/shop?category=Oversized" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Oversized Silhouette</Link>
+              <Link to="/shop?category=Oversized" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Oversized Silhouette</Link>
             </li>
             <li>
-              <Link to="/shop?category=Sneakers" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Luxury Footwear</Link>
+              <Link to="/shop?category=Sneakers" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Luxury Footwear</Link>
             </li>
             <li>
-              <Link to="/shop?category=Hoodies" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Cozy Knitwear drops</Link>
+              <Link to="/shop?category=Hoodies" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Cozy Knitwear drops</Link>
             </li>
             <li>
-              <Link to="/shop?category=Shirts" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Minimalist Shirts</Link>
+              <Link to="/shop?category=Shirts" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Minimalist Shirts</Link>
             </li>
             <li>
-              <Link to="/shop?category=Accessories" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Premium Accessories</Link>
+              <Link to="/shop?category=Accessories" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Premium Accessories</Link>
             </li>
           </ul>
         </div>
@@ -99,19 +99,19 @@ const Footer = () => {
           </h4>
           <ul className="space-y-3.5 text-xs tracking-wider text-luxury-muted font-manrope">
             <li>
-              <Link to="/contact" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Contact Client Care</Link>
+              <Link to="/contact" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Contact Client Care</Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Brand Heritage & Ethos</Link>
+              <Link to="/about" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Brand Heritage & Ethos</Link>
             </li>
             <li>
-              <a href="#returns" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Returns & Exchanges Policy</a>
+              <a href="#returns" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Returns & Exchanges Policy</a>
             </li>
             <li>
-              <a href="#shipping" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Worldwide Shipping Rates</a>
+              <a href="#shipping" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Worldwide Shipping Rates</a>
             </li>
             <li>
-              <a href="#privacy" className="hover:text-secondary transition-colors duration-300 hover:pl-1 transition-all">Privacy & Data Protections</a>
+              <a href="#privacy" className="hover:text-[#111111] transition-colors duration-300 hover:pl-1 transition-all">Privacy & Data Protections</a>
             </li>
           </ul>
         </div>
@@ -130,13 +130,13 @@ const Footer = () => {
               type="email"
               name="email"
               placeholder="ENTER EMAIL ADDRESS..."
-              className="bg-transparent text-xs outline-none text-secondary placeholder-luxury-muted flex-grow pr-8 tracking-[0.1em] font-light"
+              className="bg-transparent text-xs outline-none text-[#111111] placeholder-luxury-muted flex-grow pr-8 tracking-[0.1em] font-light"
               required
               aria-label="Email address for subscription"
             />
             <button 
               type="submit" 
-              className="absolute right-0 top-0 text-secondary hover:text-accent transition-colors duration-300" 
+              className="absolute right-0 top-0 text-[#111111] hover:text-accent transition-colors duration-300" 
               aria-label="Submit email subscription"
             >
               <ArrowRight className="w-4 h-4" />
@@ -147,17 +147,17 @@ const Footer = () => {
       </div>
 
       {/* Large branded divider monogram */}
-      <div className="w-full border-t border-luxury-border/60 py-8 overflow-hidden select-none bg-primary relative">
+      <div className="w-full border-t border-luxury-border py-8 overflow-hidden select-none bg-luxury-bg relative">
         {/* Thin Gold Line running under brand statement */}
-        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B68D40]/30 to-transparent" />
         
-        <h2 className="font-syne text-[11vw] font-black text-center text-stroke leading-none tracking-[0.15em] opacity-15 select-none">
+        <h2 className="font-syne text-[11vw] font-black text-center text-stroke leading-none tracking-[0.15em] opacity-5 select-none">
           LUXORA
         </h2>
       </div>
 
       {/* Legal and Base footer credits */}
-      <div className="bg-[#060606] py-8 px-6 md:px-12 border-t border-luxury-border/40 text-[10px] tracking-widest text-luxury-muted font-manrope uppercase font-bold">
+      <div className="bg-luxury-hover py-8 px-6 md:px-12 border-t border-luxury-border text-[10px] tracking-widest text-luxury-muted font-manrope uppercase font-bold">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
           <div>
             <span>© 2026 LUXORA HAUTE COUTURE. REGISTERED IN PORTUGAL. ALL RIGHTS RESERVED.</span>

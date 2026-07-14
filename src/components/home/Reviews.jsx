@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Star } from 'lucide-react';
 import { reviews } from '../../data/mockData';
+import LuxuryImage from '../common/LuxuryImage';
 
 // Swiper Styles
 import 'swiper/css';
@@ -21,7 +22,7 @@ const Reviews = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               06 // CLIENT COMMENDATIONS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-primary uppercase leading-none">
               CLIENT AUDITS
             </h2>
             <div className="h-[2px] bg-accent/25 w-16 mt-4" />
@@ -31,9 +32,9 @@ const Reviews = () => {
           </div>
 
           {/* Columns 2-3: Testimonial Carousel */}
-          <div className="lg:col-span-2 p-8 md:p-12 rounded-[2rem] bg-luxury-card/30 border border-luxury-border/80 relative shadow-premium overflow-hidden">
+          <div className="lg:col-span-2 p-8 md:p-12 rounded-[2rem] bg-luxury-card border border-luxury-border/80 relative shadow-premium overflow-hidden">
             {/* Giant background quote icon mark */}
-            <div className="absolute -top-6 -right-6 text-[12rem] font-syne font-black text-white/[0.02] leading-none select-none">
+            <div className="absolute -top-6 -right-6 text-[12rem] font-syne font-black text-primary/[0.015] leading-none select-none">
               “
             </div>
 
@@ -55,7 +56,7 @@ const Reviews = () => {
             >
               {reviews.map((rev) => (
                 <SwiperSlide key={rev.id}>
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-6 text-left">
                     {/* Stars */}
                     <div className="flex text-accent gap-1">
                       {Array.from({ length: rev.rating }).map((_, i) => (
@@ -64,20 +65,22 @@ const Reviews = () => {
                     </div>
 
                     {/* Review text */}
-                    <p className="font-syne text-base md:text-xl font-medium tracking-wide text-secondary leading-relaxed italic pr-6 select-text">
+                    <p className="font-syne text-base md:text-xl font-medium tracking-wide text-primary leading-relaxed italic pr-6 select-text">
                       "{rev.comment}"
                     </p>
 
                     {/* Author Meta */}
                     <div className="flex items-center gap-3.5 border-t border-luxury-border/60 pt-5 mt-2">
-                      <img
-                        src={rev.avatar}
-                        alt={rev.user}
-                        className="w-11 h-11 rounded-full object-cover border border-luxury-border/60 shadow-premium"
-                        loading="lazy"
-                      />
+                      <div className="w-11 h-11 rounded-full overflow-hidden border border-luxury-border/60 shadow-premium flex-shrink-0">
+                        <LuxuryImage
+                          src={rev.avatar}
+                          alt={rev.user}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
                       <div>
-                        <span className="block font-syne font-bold text-xs tracking-widest text-secondary uppercase">
+                        <span className="block font-syne font-bold text-xs tracking-widest text-primary uppercase">
                           {rev.user}
                         </span>
                         <span className="block text-[8px] text-accent font-extrabold tracking-wider mt-0.5">

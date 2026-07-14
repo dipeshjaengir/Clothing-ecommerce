@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
 import { Link } from 'react-router-dom';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import MagneticButton from '../common/MagneticButton';
+import LuxuryImage from '../common/LuxuryImage';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -56,8 +57,8 @@ const Hero = () => {
 
       // Zoom-out reveal for the background image
       gsap.fromTo(imageRef.current,
-        { scale: 1.15, opacity: 0 },
-        { scale: 1.05, opacity: 0.45, duration: 2.2, ease: "power2.out" }
+        { scale: 1.12, opacity: 0 },
+        { scale: 1.02, opacity: 0.85, duration: 2.2, ease: "power2.out" }
       );
     }, containerRef);
 
@@ -67,9 +68,9 @@ const Hero = () => {
       const { clientX, clientY } = e;
       const { width, height } = containerRef.current.getBoundingClientRect();
       
-      // Compute mouse ratio from center (-0.5 to 0.5)
-      const moveX = (clientX / width - 0.5) * 20; // 20px max movement
-      const moveY = (clientY / height - 0.5) * 20;
+      // Compute mouse ratio from center
+      const moveX = (clientX / width - 0.5) * 15;
+      const moveY = (clientY / height - 0.5) * 15;
 
       gsap.to(imageRef.current, {
         x: moveX,
@@ -98,24 +99,25 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen flex items-center overflow-hidden bg-[#0B0B0B] select-none"
+      className="relative w-full h-screen flex items-center overflow-hidden bg-[#F8F7F3] select-none"
     >
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          ref={imageRef}
-          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop"
-          alt="LUXORA Editorial Campaign"
-          className="w-full h-full object-cover object-center scale-105"
-        />
-        {/* Soft Vignette and Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/90 via-[#0B0B0B]/55 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-transparent to-[#0B0B0B]/50 z-10" />
-        <div className="absolute inset-0 bg-radial-vignette opacity-60 mix-blend-multiply pointer-events-none z-10" />
+        <div ref={imageRef} className="w-full h-full scale-105">
+          <LuxuryImage
+            src="https://images.unsplash.com/photo-1486308512493-ae6a8e574483?q=80&w=1600&auto=format&fit=crop"
+            alt="LUXORA Editorial Campaign"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+        {/* Soft Vignette and Gradient Overlays matching rebranding palette */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F3] via-[#F8F7F3]/70 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F3] via-transparent to-[#F8F7F3]/40 z-10" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-50 pointer-events-none z-10" />
       </div>
 
       {/* Hero Content - Left Aligned with spacious design */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center h-full">
+      <div className="relative z-25 w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center h-full">
         <div className="max-w-3xl text-left flex flex-col items-start pt-16">
           
           {/* Subtitle Badge */}
@@ -123,7 +125,7 @@ const Hero = () => {
             ref={sublineRef}
             className="mb-5 opacity-0"
           >
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-accent uppercase font-syne">
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-[#B68D40] uppercase font-syne">
               NEW COLLECTION 2026
             </span>
           </div>
@@ -132,7 +134,7 @@ const Hero = () => {
           <div className="mb-6 select-text">
             <h1 
               ref={headlineRef}
-              className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide text-[#F8F8F8] leading-[1.1] uppercase"
+              className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide text-[#111111] leading-[1.1] uppercase"
             >
               Crafted for<br />
               Modern Luxury.
@@ -142,7 +144,7 @@ const Hero = () => {
           {/* Description Subheading */}
           <p 
             ref={descRef}
-            className="text-xs sm:text-sm md:text-base text-luxury-muted font-light leading-relaxed font-manrope max-w-md mb-10 opacity-0"
+            className="text-xs sm:text-sm md:text-base text-[#6D6D6D] font-light leading-relaxed font-manrope max-w-md mb-10 opacity-0"
           >
             Timeless silhouettes designed for everyday elegance.
           </p>
@@ -155,9 +157,9 @@ const Hero = () => {
             <MagneticButton>
               <Link
                 to="/shop"
-                className="px-8 py-4 bg-accent text-black font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-accent-light transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden shadow-gold"
+                className="px-8 py-4 bg-[#111111] text-[#F8F7F3] font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-[#B68D40] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden shadow-premium"
               >
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
                 EXPLORE COLLECTION <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </MagneticButton>
@@ -165,7 +167,7 @@ const Hero = () => {
             <MagneticButton>
               <Link
                 to="/collections"
-                className="px-8 py-4 bg-transparent text-[#F8F8F8] border border-white/20 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex justify-center"
+                className="px-8 py-4 bg-transparent text-[#111111] border border-black/10 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 flex justify-center"
               >
                 VIEW LOOKBOOK
               </Link>

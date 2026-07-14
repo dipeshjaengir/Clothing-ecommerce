@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-luxury-bg text-secondary font-manrope selection:bg-accent selection:text-black overflow-x-hidden antialiased;
+    @apply bg-luxury-bg text-primary font-manrope selection:bg-accent selection:text-white overflow-x-hidden antialiased;
   }
 }
 
@@ -35,15 +35,15 @@ html.lenis, html.lenis body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0B0B;
+  background: #F8F7F3;
 }
 ::-webkit-scrollbar-thumb {
-  background: #242424;
+  background: #E4DED3;
   border-radius: 3px;
   transition: background 0.3s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9A227;
+  background: #B68D40;
 }
 
 /* Hide default cursor on desktop when custom cursor is active */
@@ -55,32 +55,32 @@ html.lenis, html.lenis body {
 
 /* Glassmorphism utility classes */
 .glassmorphism {
-  background: rgba(11, 11, 11, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(182, 141, 64, 0.1);
 }
 
 .glassmorphism-light {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #C9A227 0%, #FFE07D 50%, #A38018 100%);
+  background: linear-gradient(135deg, #B68D40 0%, #D8BE8A 50%, #96722E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-stroke {
-  -webkit-text-stroke: 1px rgba(248, 248, 248, 0.15);
+  -webkit-text-stroke: 1px rgba(17, 17, 17, 0.08);
   color: transparent;
 }
 
 .text-stroke-gold {
-  -webkit-text-stroke: 1px rgba(201, 162, 39, 0.25);
+  -webkit-text-stroke: 1px rgba(182, 141, 64, 0.2);
   color: transparent;
 }
 
@@ -95,19 +95,19 @@ html.lenis, html.lenis body {
 
 /* Swiper custom styles */
 .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(182, 141, 64, 0.2) !important;
   opacity: 1 !important;
   transition: all 0.3s ease !important;
 }
 .swiper-pagination-bullet-active {
-  background: #C9A227 !important;
+  background: #B68D40 !important;
   width: 20px !important;
   border-radius: 4px !important;
 }
 
 /* Premium Vignette Overlay */
 .bg-radial-vignette {
-  background: radial-gradient(circle, transparent 30%, rgba(11, 11, 11, 0.8) 100%);
+  background: radial-gradient(circle, transparent 40%, rgba(248, 247, 243, 0.6) 100%);
 }
 
 /* Accessibility Focus Rings */
@@ -115,7 +115,7 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #C9A227 !important;
+  outline: 2px solid #B68D40 !important;
   outline-offset: 3px;
 }
 

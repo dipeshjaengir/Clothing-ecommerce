@@ -3,6 +3,7 @@ import { Search, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { products } from '../../data/mockData';
+import LuxuryImage from '../common/LuxuryImage';
 
 const SearchPopup = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
@@ -84,9 +85,9 @@ const SearchPopup = ({ isOpen, onClose }) => {
             className="w-full max-w-3xl bg-luxury-bg border border-luxury-border p-6 md:p-10 rounded-3xl shadow-premium relative"
           >
             {/* Close Button */}
-            <button
+             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 text-luxury-muted hover:text-white transition-colors"
+              className="absolute top-6 right-6 p-2 text-luxury-muted hover:text-primary transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -99,7 +100,7 @@ const SearchPopup = ({ isOpen, onClose }) => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="SEARCH THE LUXORA ARCHIVE..."
-                className="w-full bg-transparent text-xl md:text-3xl font-syne font-semibold tracking-wider outline-none text-white placeholder-luxury-muted pr-10"
+                className="w-full bg-transparent text-xl md:text-3xl font-syne font-semibold tracking-wider outline-none text-primary placeholder-luxury-muted pr-10"
               />
               <button type="submit" className="absolute right-0 top-1 text-accent hover:text-accent-light">
                 <Search className="w-7 h-7" />
@@ -141,13 +142,15 @@ const SearchPopup = ({ isOpen, onClose }) => {
                         onClick={() => handleResultClick(product.id)}
                         className="flex items-center gap-4 p-3 rounded-2xl bg-luxury-card/50 hover:bg-luxury-card border border-transparent hover:border-luxury-border cursor-pointer transition-all duration-300 group"
                       >
-                        <img
-                          src={product.images[0]}
-                          alt={product.name}
-                          className="w-16 h-20 object-cover rounded-xl bg-luxury-border flex-shrink-0"
-                        />
+                        <div className="w-16 h-20 overflow-hidden rounded-xl bg-luxury-border flex-shrink-0">
+                          <LuxuryImage
+                            src={product.images[0]}
+                            alt={product.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <div className="flex-grow">
-                          <h5 className="font-syne font-bold text-sm md:text-base text-white tracking-wider group-hover:text-accent transition-colors duration-300">
+                          <h5 className="font-syne font-bold text-sm md:text-base text-primary tracking-wider group-hover:text-accent transition-colors duration-300">
                             {product.name}
                           </h5>
                           <span className="text-xs font-manrope text-luxury-muted">
@@ -170,7 +173,7 @@ const SearchPopup = ({ isOpen, onClose }) => {
                 {query !== '' && results.length > 0 && (
                   <button 
                     onClick={handleSearchSubmit}
-                    className="w-full mt-6 text-center text-xs tracking-widest font-syne font-bold text-accent hover:text-white transition-colors flex items-center justify-center gap-2"
+                    className="w-full mt-6 text-center text-xs tracking-widest font-syne font-bold text-accent hover:text-primary transition-colors flex items-center justify-center gap-2"
                   >
                     VIEW ALL RESULTS <ArrowRight className="w-3.5 h-3.5" />
                   </button>

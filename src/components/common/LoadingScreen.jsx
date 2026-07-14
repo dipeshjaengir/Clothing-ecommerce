@@ -45,7 +45,7 @@ const LoadingScreen = ({ isFinished }) => {
               initial={{ letterSpacing: '0.5em', opacity: 0 }}
               animate={{ letterSpacing: '0.25em', opacity: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
-              className="font-syne text-5xl md:text-8xl font-bold tracking-widest text-white mb-2"
+              className="font-syne text-5xl md:text-8xl font-bold tracking-widest text-primary mb-2"
             >
               LUXORA
             </motion.h1>

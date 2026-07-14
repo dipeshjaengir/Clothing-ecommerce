@@ -3,6 +3,7 @@ import { X, ShoppingBag, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
+import LuxuryImage from '../common/LuxuryImage';
 
 const CartDrawer = () => {
   const { cart, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, cartSubtotal } = useCart();
@@ -75,11 +76,13 @@ const CartDrawer = () => {
                     className="flex gap-4 p-4 rounded-2xl bg-luxury-card/30 border border-luxury-border/60 hover:border-luxury-border transition-all duration-300 relative group"
                   >
                     {/* Item Image */}
-                    <img
-                      src={item.product.images[0]}
-                      alt={item.product.name}
-                      className="w-20 h-24 object-cover rounded-xl bg-luxury-border flex-shrink-0"
-                    />
+                    <div className="w-20 h-24 overflow-hidden rounded-xl bg-luxury-border flex-shrink-0">
+                      <LuxuryImage
+                        src={item.product.images[0]}
+                        alt={item.product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
 
                     {/* Item Details */}
                     <div className="flex-grow flex flex-col justify-between">

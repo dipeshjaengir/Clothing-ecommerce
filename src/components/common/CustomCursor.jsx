@@ -84,8 +84,8 @@ const CustomCursor = () => {
         }}
         animate={{
           scale: hovered ? 1.6 : 1,
-          backgroundColor: hovered ? 'rgba(201, 162, 39, 0.15)' : 'rgba(201, 162, 39, 0)',
-          borderColor: hovered ? '#FFE07D' : '#C9A227',
+          backgroundColor: hovered ? 'rgba(182, 141, 64, 0.15)' : 'rgba(182, 141, 64, 0)',
+          borderColor: hovered ? '#D8BE8A' : '#B68D40',
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.15 }}
       />

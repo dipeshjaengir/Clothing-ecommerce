@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import ProductCard from '../components/common/ProductCard';
 import SkeletonLoader from '../components/common/SkeletonLoader';
+import LuxuryImage from '../components/common/LuxuryImage';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -40,7 +41,7 @@ const ProductDetails = () => {
 
   if (loading) {
     return (
-      <div className="pt-32 pb-24 bg-luxury-bg text-white font-manrope min-h-screen">
+      <div className="pt-32 pb-24 bg-luxury-bg text-primary font-manrope min-h-screen">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <SkeletonLoader type="details" />
         </div>
@@ -50,12 +51,12 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="pt-32 pb-24 bg-luxury-bg text-white font-manrope min-h-screen flex flex-col justify-center items-center text-center">
+      <div className="pt-32 pb-24 bg-luxury-bg text-primary font-manrope min-h-screen flex flex-col justify-center items-center text-center">
         <h2 className="font-syne text-3xl font-bold mb-4">PRODUCT ARCHIVE NOT FOUND</h2>
         <p className="text-luxury-muted mb-8">The requested garment does not exist in our system.</p>
         <Link
           to="/shop"
-          className="px-8 py-4 bg-white text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-all duration-300"
+          className="px-8 py-4 bg-[#111111] text-[#F8F7F3] font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent hover:text-black transition-all duration-300"
         >
           RETURN TO SHOP
         </Link>
@@ -79,16 +80,16 @@ const ProductDetails = () => {
   const isFavorited = isInWishlist(product.id);
 
   return (
-    <div className="pt-28 pb-24 bg-luxury-bg text-white font-manrope">
+    <div className="pt-28 pb-24 bg-luxury-bg text-primary font-manrope">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-luxury-muted uppercase mb-8">
-          <Link to="/" className="hover:text-white transition-colors">HOME</Link>
+          <Link to="/" className="hover:text-primary transition-colors">HOME</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link to="/shop" className="hover:text-white transition-colors">SHOP</Link>
+          <Link to="/shop" className="hover:text-primary transition-colors">SHOP</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link to={`/shop?category=${product.category}`} className="hover:text-white transition-colors">{product.category}</Link>
+          <Link to={`/shop?category=${product.category}`} className="hover:text-primary transition-colors">{product.category}</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-accent truncate max-w-[150px]">{product.name}</span>
         </nav>
@@ -100,7 +101,7 @@ const ProductDetails = () => {
           <div className="flex flex-col gap-4">
             {/* Main Image View */}
             <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-luxury-card border border-luxury-border">
-              <img
+              <LuxuryImage
                 src={activeImage}
                 alt={product.name}
                 className="w-full h-full object-cover"
@@ -114,10 +115,10 @@ const ProductDetails = () => {
                   key={idx}
                   onClick={() => setActiveImage(img)}
                   className={`aspect-square rounded-xl overflow-hidden bg-luxury-card border transition-all ${
-                    activeImage === img ? 'border-accent scale-[0.98]' : 'border-luxury-border hover:border-white/40'
+                    activeImage === img ? 'border-accent scale-[0.98]' : 'border-luxury-border hover:border-accent/40'
                   }`}
                 >
-                  <img
+                  <LuxuryImage
                     src={img}
                     alt={`${product.name} thumbnail ${idx + 1}`}
                     className="w-full h-full object-cover"
@@ -135,7 +136,7 @@ const ProductDetails = () => {
               <span className="text-[10px] font-bold tracking-widest text-accent uppercase">
                 {product.category.toUpperCase()} DROP
               </span>
-              <h1 className="font-syne text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase mt-2">
+              <h1 className="font-syne text-3xl md:text-4xl font-extrabold tracking-wider text-primary uppercase mt-2">
                 {product.name}
               </h1>
               
@@ -159,7 +160,7 @@ const ProductDetails = () => {
 
             {/* Price tag */}
             <div className="border-b border-luxury-border/60 pb-6">
-              <span className="text-3xl font-extrabold text-white font-manrope">
+              <span className="text-3xl font-extrabold text-primary font-manrope">
                 ${product.price}
               </span>
             </div>
@@ -172,7 +173,7 @@ const ProductDetails = () => {
             {/* Select Color */}
             <div>
               <span className="text-[10px] font-bold tracking-widest text-luxury-muted uppercase block mb-3">
-                SELECT TINT: <strong className="text-white ml-1">{selectedColor}</strong>
+                SELECT TINT: <strong className="text-primary ml-1">{selectedColor}</strong>
               </span>
               <div className="flex gap-2">
                 {product.colors.map((color) => (
@@ -197,7 +198,7 @@ const ProductDetails = () => {
             <div>
               <div className="flex justify-between items-center mb-3">
                 <span className="text-[10px] font-bold tracking-widest text-luxury-muted uppercase">
-                  SELECT SIZING: <strong className="text-white ml-1">{selectedSize}</strong>
+                  SELECT SIZING: <strong className="text-primary ml-1">{selectedSize}</strong>
                 </span>
                 <button className="text-[10px] font-bold tracking-widest text-accent hover:underline flex items-center gap-1">
                   <HelpCircle className="w-3.5 h-3.5" /> SIZE CHART
@@ -210,8 +211,8 @@ const ProductDetails = () => {
                     onClick={() => setSelectedSize(size)}
                     className={`w-12 h-12 rounded-xl border text-xs font-bold flex items-center justify-center transition-all duration-300 ${
                       selectedSize === size
-                        ? 'border-accent bg-accent text-black font-extrabold'
-                        : 'border-luxury-border bg-luxury-card text-white hover:border-white/50'
+                        ? 'border-accent bg-accent text-white font-extrabold'
+                        : 'border-luxury-border bg-luxury-card text-primary hover:border-accent/40'
                     }`}
                   >
                     {size}
@@ -227,14 +228,14 @@ const ProductDetails = () => {
               <div className="flex items-center justify-between border border-luxury-border rounded-xl px-4 py-3 bg-luxury-card/30 sm:w-32">
                 <button
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  className="text-luxury-muted hover:text-white font-bold transition-colors"
+                  className="text-luxury-muted hover:text-primary font-bold transition-colors"
                 >
                   -
                 </button>
                 <span className="font-bold text-xs select-none font-manrope">{quantity}</span>
                 <button
                   onClick={() => setQuantity(q => q + 1)}
-                  className="text-luxury-muted hover:text-white font-bold transition-colors"
+                  className="text-luxury-muted hover:text-primary font-bold transition-colors"
                 >
                   +
                 </button>
@@ -254,7 +255,7 @@ const ProductDetails = () => {
                 className={`py-4 px-5 rounded-xl border flex items-center justify-center transition-colors duration-300 ${
                   isFavorited
                     ? 'border-accent text-accent bg-accent/5'
-                    : 'border-luxury-border text-white hover:text-accent hover:border-accent'
+                    : 'border-luxury-border text-primary hover:text-accent hover:border-accent'
                 }`}
                 title="Add to Wishlist"
               >
@@ -270,7 +271,7 @@ const ProductDetails = () => {
                 <button
                   onClick={() => setActiveTab('details')}
                   className={`py-3.5 border-r border-luxury-border transition-colors ${
-                    activeTab === 'details' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-white'
+                    activeTab === 'details' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-primary'
                   }`}
                 >
                   SPECIFICATIONS
@@ -278,7 +279,7 @@ const ProductDetails = () => {
                 <button
                   onClick={() => setActiveTab('shipping')}
                   className={`py-3.5 border-r border-luxury-border transition-colors ${
-                    activeTab === 'shipping' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-white'
+                    activeTab === 'shipping' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-primary'
                   }`}
                 >
                   SHIPPING
@@ -286,7 +287,7 @@ const ProductDetails = () => {
                 <button
                   onClick={() => setActiveTab('care')}
                   className={`py-3.5 transition-colors ${
-                    activeTab === 'care' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-white'
+                    activeTab === 'care' ? 'text-accent bg-luxury-bg/30' : 'text-luxury-muted hover:text-primary'
                   }`}
                 >
                   CLEANING
@@ -323,7 +324,7 @@ const ProductDetails = () => {
           <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
             <div>
               <span className="text-[10px] font-bold tracking-widest text-accent uppercase">VERIFIED REVIEWS</span>
-              <h2 className="font-syne text-2xl md:text-3xl font-black tracking-wider text-white uppercase mt-1">CLIENT REVIEWS</h2>
+              <h2 className="font-syne text-2xl md:text-3xl font-black tracking-wider text-primary uppercase mt-1">CLIENT REVIEWS</h2>
             </div>
             <button className="px-6 py-3 border border-luxury-border rounded-xl text-xs font-syne font-bold tracking-widest hover:border-accent hover:text-accent transition-colors">
               WRITE A REVIEW
@@ -338,14 +339,16 @@ const ProductDetails = () => {
               >
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-3">
-                    <img
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-luxury-border/60 shadow-premium flex-shrink-0">
+                    <LuxuryImage
                       src={rev.avatar}
                       alt={rev.user}
-                      className="w-10 h-10 rounded-full object-cover"
+                      className="w-full h-full object-cover"
                     />
-                    <div>
-                      <h4 className="font-syne font-bold text-xs tracking-wider text-white uppercase">{rev.user}</h4>
-                      <span className="text-[9px] text-accent font-semibold tracking-wider">VERIFIED REJECT</span>
+                  </div>
+                  <div>
+                    <h4 className="font-syne font-bold text-xs tracking-wider text-primary uppercase">{rev.user}</h4>
+                    <span className="text-[9px] text-accent font-semibold tracking-wider">VERIFIED ACQUISITION</span>
                     </div>
                   </div>
                   <div className="flex text-accent gap-0.5">
@@ -364,7 +367,7 @@ const ProductDetails = () => {
         {/* Recommended Products */}
         {relatedProducts.length > 0 && (
           <section className="mt-28 border-t border-luxury-border/60 pt-16">
-            <h2 className="font-syne text-2xl md:text-3xl font-black tracking-wider text-white uppercase mb-12">
+            <h2 className="font-syne text-2xl md:text-3xl font-black tracking-wider text-primary uppercase mb-12">
               RECOMMENDED COMPLEMENTS
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

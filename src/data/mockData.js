@@ -205,8 +205,8 @@ export const products = [
       "Made in France"
     ],
     images: [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
@@ -361,9 +361,9 @@ export const products = [
       "Handcrafted in Spain"
     ],
     images: [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1624222247344-550fb8ecf7db?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?q=80&w=800&auto=format&fit=crop"
     ],
     colors: [
       { name: "Chestnut Brown", hex: "#5C3A21" },

@@ -18,7 +18,7 @@ const Trending = () => {
             <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
               03 // HIGH CONVERSION SELECTIONS
             </span>
-            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-primary uppercase leading-none">
               TRENDING PRODUCTS
             </h2>
           </div>
@@ -34,13 +34,13 @@ const Trending = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Column 1: Typographic Editorial Card */}
-          <div className="p-8 rounded-3xl bg-luxury-card/30 border border-luxury-border/80 flex flex-col justify-between aspect-[3/4] shadow-premium relative overflow-hidden group hover:border-accent/40 transition-colors duration-500">
+          <div className="p-8 rounded-3xl bg-luxury-card border border-luxury-border/80 flex flex-col justify-between aspect-[3/4] shadow-premium relative overflow-hidden group hover:border-accent/40 transition-colors duration-500">
             {/* Soft backdrop shine */}
             <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-all duration-700" />
             
             <div>
               <span className="text-[9px] font-bold tracking-widest text-accent uppercase font-syne block mb-2">THE CONCEPT</span>
-              <h3 className="font-syne text-2xl font-extrabold tracking-wide text-secondary uppercase leading-snug">
+              <h3 className="font-syne text-2xl font-extrabold tracking-wide text-primary uppercase leading-snug">
                 MODERN<br />
                 ESSENTIALS<br />
                 ARCHIVE
@@ -54,7 +54,7 @@ const Trending = () => {
               </p>
               <Link 
                 to="/shop" 
-                className="text-[10px] font-syne font-bold tracking-widest text-secondary hover:text-accent flex items-center gap-1.5 transition-colors"
+                className="text-[10px] font-syne font-bold tracking-widest text-primary hover:text-accent flex items-center gap-1.5 transition-colors"
               >
                 BROWSE ARCHIVES <ArrowRight className="w-3.5 h-3.5" />
               </Link>

@@ -85,7 +85,7 @@ const Shop = () => {
     });
 
   return (
-    <div className="pt-28 pb-24 bg-luxury-bg text-white font-manrope">
+    <div className="pt-28 pb-24 bg-luxury-bg text-primary font-manrope">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Page Title / Meta */}
@@ -93,12 +93,12 @@ const Shop = () => {
           <span className="text-[10px] font-bold tracking-widest text-accent uppercase">
             ARCHIVE CLASSIFICATION
           </span>
-          <h1 className="font-syne text-4xl md:text-6xl font-black tracking-wider text-white uppercase mt-2">
+          <h1 className="font-syne text-4xl md:text-6xl font-black tracking-wider text-primary uppercase mt-2">
             THE LUXORA SHOP
           </h1>
           {searchQuery && (
             <p className="text-xs text-luxury-muted mt-3 font-manrope flex items-center gap-2">
-              Showing search results for <strong className="text-white">"{searchQuery}"</strong>
+              Showing search results for <strong className="text-primary">"{searchQuery}"</strong>
               <button 
                 onClick={() => handleResetFilters()} 
                 className="p-1 rounded bg-luxury-card border border-luxury-border hover:border-red-500 transition-colors"
@@ -114,7 +114,7 @@ const Shop = () => {
         <div className="flex justify-between items-center bg-luxury-card/30 border border-luxury-border/80 rounded-2xl p-4 mb-8">
           <button
             onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-2 px-4 py-2 border border-luxury-border rounded-xl text-xs font-syne font-bold tracking-widest hover:border-accent hover:text-accent transition-colors"
+            className="lg:hidden flex items-center gap-2 px-4 py-2 border border-luxury-border rounded-xl text-xs font-syne font-bold tracking-widest hover:border-accent text-primary hover:text-accent transition-colors bg-luxury-card"
           >
             <SlidersHorizontal className="w-4 h-4" /> FILTERS
           </button>
@@ -128,7 +128,7 @@ const Shop = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-luxury-bg border border-luxury-border text-xs font-semibold py-2 px-3 rounded-xl outline-none focus:border-accent tracking-wider font-syne"
+              className="bg-luxury-bg border border-luxury-border text-primary text-xs font-semibold py-2 px-3 rounded-xl outline-none focus:border-accent tracking-wider font-syne"
             >
               <option value="newest">NEW RELEASES</option>
               <option value="low-to-high">PRICE: LOW TO HIGH</option>
@@ -155,7 +155,7 @@ const Shop = () => {
                     key={cat}
                     onClick={() => handleCategorySelect(cat)}
                     className={`text-left text-xs font-semibold tracking-wider py-1.5 transition-colors ${
-                      categoryFilter === cat ? 'text-accent font-bold' : 'text-luxury-muted hover:text-white'
+                      categoryFilter === cat ? 'text-accent font-bold' : 'text-luxury-muted hover:text-primary'
                     }`}
                   >
                     {cat.toUpperCase()}
@@ -187,7 +187,7 @@ const Shop = () => {
             {/* Reset Button */}
             <button
               onClick={handleResetFilters}
-              className="w-full py-3 border border-luxury-border rounded-xl text-xs font-syne font-bold tracking-widest hover:border-accent hover:text-accent transition-all duration-300"
+              className="w-full py-3 border border-luxury-border rounded-xl text-xs font-syne font-bold tracking-widest text-primary hover:border-accent hover:text-accent transition-all duration-300"
             >
               RESET ALL FILTERS
             </button>
@@ -209,7 +209,7 @@ const Shop = () => {
                 <p className="text-sm text-luxury-muted max-w-[280px] mb-6">Modify your filter criteria or reset parameters to browse the archive.</p>
                 <button
                   onClick={handleResetFilters}
-                  className="px-6 py-3 bg-white text-black font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent transition-colors"
+                  className="px-6 py-3 bg-[#111111] text-[#F8F7F3] font-syne font-bold text-xs tracking-widest rounded-full hover:bg-accent transition-colors"
                 >
                   RESET FILTERS
                 </button>
@@ -245,7 +245,7 @@ const Shop = () => {
                 <div className="flex justify-between items-center border-b border-luxury-border pb-4">
                   <span className="font-syne font-bold text-sm tracking-widest">FILTER SELECTIONS</span>
                   <button onClick={() => setIsMobileFilterOpen(false)}>
-                    <X className="w-5 h-5 text-luxury-muted hover:text-white" />
+                    <X className="w-5 h-5 text-luxury-muted hover:text-primary" />
                   </button>
                 </div>
 
@@ -299,7 +299,7 @@ const Shop = () => {
                 </button>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="w-full py-3 bg-white text-black rounded-xl text-xs font-syne font-bold tracking-widest"
+                  className="w-full py-3 bg-[#111111] text-[#F8F7F3] rounded-xl text-xs font-syne font-bold tracking-widest"
                 >
                   APPLY FILTERS
                 </button>

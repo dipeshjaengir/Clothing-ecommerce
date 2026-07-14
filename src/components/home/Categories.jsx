@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LuxuryImage from '../common/LuxuryImage';
 
 const Categories = () => {
   const categoriesList = [
@@ -46,7 +47,7 @@ const Categories = () => {
           <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
             04 // CURATED CATEGORIES
           </span>
-          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-secondary uppercase leading-none">
+          <h2 className="font-syne text-4xl md:text-5xl font-black tracking-wider text-primary uppercase leading-none">
             SHOP BY CLASSIFICATION
           </h2>
         </div>
@@ -63,15 +64,16 @@ const Categories = () => {
               className={`group relative overflow-hidden rounded-[2rem] bg-luxury-card border border-luxury-border/60 hover:border-accent/30 transition-colors duration-500 ${cat.gridClass}`}
             >
               {/* Image with zoom and vignette */}
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 opacity-55 group-hover:opacity-70"
-                loading="lazy"
-              />
+              <div className="w-full h-full transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 opacity-85 group-hover:opacity-90">
+                <LuxuryImage
+                  src={cat.image}
+                  alt={cat.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               
               {/* Radial gradient mask for text contrast */}
-              <div className="absolute inset-0 bg-radial-vignette opacity-80 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-90" />
+              <div className="absolute inset-0 bg-[#111111]/45 transition-opacity duration-500 group-hover:opacity-60" />
               
               {/* Gold border accent inside the card on hover */}
               <div className="absolute inset-4 rounded-[1.5rem] border border-accent/0 group-hover:border-accent/15 transition-all duration-500 pointer-events-none" />
@@ -81,13 +83,13 @@ const Categories = () => {
                 <span className="text-[9px] font-bold tracking-[0.2em] text-accent mb-2 font-syne">
                   {cat.label}
                 </span>
-                <h3 className="font-syne font-bold text-2xl md:text-3xl text-secondary tracking-widest uppercase">
+                <h3 className="font-syne font-bold text-2xl md:text-3xl text-white tracking-widest uppercase">
                   {cat.name}
                 </h3>
                 
                 <Link
                   to={`/shop?category=${cat.name}`}
-                  className="mt-5 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-secondary/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent group"
+                  className="mt-5 flex items-center gap-1.5 text-[10px] font-syne font-bold tracking-widest text-white/80 group-hover:text-accent transition-colors py-1 border-b border-white/20 group-hover:border-accent group"
                 >
                   DISCOVER ARCHIVE 
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

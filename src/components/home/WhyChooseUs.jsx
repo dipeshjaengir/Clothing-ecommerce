@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
   return (
     <section className="py-32 bg-luxury-bg border-b border-luxury-border/60 relative">
       {/* Top gold separator line */}
-      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B68D40]/20 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
           <span className="text-[10px] font-syne font-extrabold tracking-[0.3em] text-accent uppercase block mb-3">
             05 // THE CLIENT CHARTER
           </span>
-          <h2 className="font-syne text-3xl md:text-4xl font-black tracking-wider text-secondary uppercase leading-none">
+          <h2 className="font-syne text-3xl md:text-4xl font-black tracking-wider text-primary uppercase leading-none">
             WHY LUXORA COUTURE
           </h2>
           <div className="h-[2px] bg-accent/25 w-16 mx-auto mt-4" />
@@ -53,17 +53,17 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
-              className="p-8 rounded-[2rem] bg-luxury-card/30 border border-luxury-border/60 hover:border-accent/30 transition-all duration-500 hover:shadow-premium flex flex-col justify-start gap-5 group"
+              className="p-8 rounded-[2rem] bg-luxury-card border border-luxury-border/60 hover:border-accent/30 transition-all duration-500 hover:shadow-premium flex flex-col justify-start gap-5 group"
             >
               {/* Icon Container with scale springs */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="bg-luxury-card w-12 h-12 rounded-2xl flex items-center justify-center border border-luxury-border shadow-premium group-hover:border-accent/40 group-hover:text-accent transition-colors duration-300"
+                className="bg-luxury-bg w-12 h-12 rounded-2xl flex items-center justify-center border border-luxury-border shadow-premium group-hover:border-accent/40 group-hover:text-accent transition-colors duration-300"
               >
                 {card.icon}
               </motion.div>
               
-              <h3 className="font-syne font-bold text-xs tracking-widest text-secondary uppercase">
+              <h3 className="font-syne font-bold text-xs tracking-widest text-primary uppercase">
                 {card.title}
               </h3>
               
