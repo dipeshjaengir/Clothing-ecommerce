@@ -1,9 +1,9 @@
 export const products = [
   {
     id: "lx-001",
-    name: "Luxury Knit Oversized Hoodie",
-    price: 240,
-    category: "Hoodies",
+    name: "Oversized Wool Coat",
+    price: 380,
+    category: "Coat",
     gender: "Unisex",
     rating: 4.9,
     reviewsCount: 124,
@@ -16,7 +16,7 @@ export const products = [
       "Made in Portugal"
     ],
     images: [
-      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop"
     ],
@@ -27,15 +27,15 @@ export const products = [
     ],
     sizes: ["S", "M", "L", "XL"],
     inStock: true,
-    isNew: false,
+    isNew: true,
     isFeatured: true,
     isTrending: false,
   },
   {
     id: "lx-002",
-    name: "Structured Boxy Tee",
-    price: 95,
-    category: "T-Shirts",
+    name: "Textured Knit Polo",
+    price: 160,
+    category: "Knitwear",
     gender: "Men",
     rating: 4.8,
     reviewsCount: 88,
@@ -48,7 +48,7 @@ export const products = [
       "Made in Italy"
     ],
     images: [
-      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop"
     ],
@@ -59,14 +59,14 @@ export const products = [
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     inStock: true,
-    isNew: false,
+    isNew: true,
     isFeatured: true,
     isTrending: false,
   },
   {
     id: "lx-003",
-    name: "Editorial Silk Linen Shirt",
-    price: 310,
+    name: "Silk Linen Shirt",
+    price: 210,
     category: "Shirts",
     gender: "Women",
     rating: 5.0,
@@ -90,15 +90,15 @@ export const products = [
     ],
     sizes: ["XS", "S", "M", "L"],
     inStock: true,
-    isNew: false,
+    isNew: true,
     isFeatured: true,
     isTrending: false,
   },
   {
     id: "lx-004",
-    name: "Vintage Straight Selvedge Denim",
-    price: 280,
-    category: "Jeans",
+    name: "Essential T-Shirt",
+    price: 90,
+    category: "T-Shirts",
     gender: "Men",
     rating: 4.7,
     reviewsCount: 67,
@@ -111,7 +111,7 @@ export const products = [
       "Made in Japan"
     ],
     images: [
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1481973964012-59a7f3225eb1?q=80&w=800&auto=format&fit=crop"
     ],
@@ -121,14 +121,14 @@ export const products = [
     ],
     sizes: ["30", "31", "32", "33", "34", "36"],
     inStock: true,
-    isNew: false,
+    isNew: true,
     isFeatured: true,
     isTrending: false,
   },
   {
     id: "lx-005",
-    name: "LUXORA Gold Signature Runner",
-    price: 450,
+    name: "Leather Sneakers",
+    price: 250,
     category: "Sneakers",
     gender: "Unisex",
     rating: 4.9,
@@ -158,9 +158,9 @@ export const products = [
   },
   {
     id: "lx-006",
-    name: "Saffiano Leather Work Tote",
-    price: 380,
-    category: "Accessories",
+    name: "Leather Duffle Bag",
+    price: 430,
+    category: "Bags",
     gender: "Women",
     rating: 4.8,
     reviewsCount: 54,
@@ -173,7 +173,7 @@ export const products = [
       "Luxury cotton dustbag included"
     ],
     images: [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop"
     ],
@@ -184,9 +184,9 @@ export const products = [
     ],
     sizes: ["One Size"],
     inStock: true,
-    isNew: false,
+    isNew: true,
     isFeatured: false,
-    isTrending: true,
+    isTrending: false,
   },
   {
     id: "lx-007",
@@ -216,8 +216,8 @@ export const products = [
     sizes: ["One Size"],
     inStock: true,
     isNew: false,
-    isFeatured: false,
-    isTrending: true,
+    isFeatured: true,
+    isTrending: false,
   },
   {
     id: "lx-008",
@@ -246,7 +246,7 @@ export const products = [
     ],
     sizes: ["XS", "S", "M", "L"],
     inStock: true,
-    isNew: true,
+    isNew: false,
     isFeatured: true,
     isTrending: false,
   },
@@ -279,8 +279,8 @@ export const products = [
     sizes: ["40", "41", "42", "43", "44", "45"],
     inStock: true,
     isNew: false,
-    isFeatured: false,
-    isTrending: true,
+    isFeatured: true,
+    isTrending: false,
   },
   {
     id: "lx-010",
@@ -309,9 +309,9 @@ export const products = [
     ],
     sizes: ["S", "M", "L", "XL"],
     inStock: true,
-    isNew: true,
-    isFeatured: false,
-    isTrending: true,
+    isNew: false,
+    isFeatured: true,
+    isTrending: false,
   },
   {
     id: "lx-011",
@@ -340,9 +340,9 @@ export const products = [
     ],
     sizes: ["XS", "S", "M", "L"],
     inStock: true,
-    isNew: true,
-    isFeatured: true,
-    isTrending: false,
+    isNew: false,
+    isFeatured: false,
+    isTrending: true,
   },
   {
     id: "lx-012",
@@ -373,7 +373,33 @@ export const products = [
     inStock: true,
     isNew: false,
     isFeatured: false,
-    isTrending: false,
+    isTrending: true,
+  },
+  {
+    id: "lx-013",
+    name: "Minimal Wool Scarf",
+    price: 110,
+    category: "Accessories",
+    gender: "Unisex",
+    rating: 4.9,
+    reviewsCount: 38,
+    description: "An ultra-soft minimal scarf woven from a fine blend of baby alpaca and organic wool.",
+    details: [
+      "70% Organic Wool, 30% Baby Alpaca",
+      "Soft fringed edges",
+      "Made in Peru"
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1520635360276-79f3dbd809f6?q=80&w=800&auto=format&fit=crop"
+    ],
+    colors: [
+      { name: "Oatmeal", hex: "#E3DFD5" }
+    ],
+    sizes: ["One Size"],
+    inStock: true,
+    isNew: false,
+    isFeatured: false,
+    isTrending: true,
   }
 ];
 
