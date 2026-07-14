@@ -14,6 +14,7 @@ const Hero = () => {
   const descRef = useRef(null);
   const ctaRef = useRef(null);
   const imageRef = useRef(null);
+  const shapesRef = useRef(null);
 
   useEffect(() => {
     let splitInstance;
@@ -21,7 +22,7 @@ const Hero = () => {
       // Split text into characters
       splitInstance = new SplitType(headlineRef.current, { types: 'chars' });
       
-      // Wrap characters in overflow hidden wrapper dynamically in JS
+      // Wrap characters in overflow hidden wrapper
       splitInstance.chars.forEach(char => {
         const wrapper = document.createElement('span');
         wrapper.style.display = 'inline-block';
@@ -39,45 +40,57 @@ const Hero = () => {
 
       // Subtle float reveal for subline badge
       gsap.fromTo(sublineRef.current,
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.0 }
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.9 }
       );
 
       // Float reveal for subline description
       gsap.fromTo(descRef.current,
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.2 }
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.1 }
       );
 
       // Slide reveal for call to actions
       gsap.fromTo(ctaRef.current,
-        { y: 35, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.4 }
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 1.3 }
       );
 
-      // Zoom-out reveal for the background image
+      // Fade up reveal for the model image card
       gsap.fromTo(imageRef.current,
-        { scale: 1.12, opacity: 0 },
-        { scale: 1.02, opacity: 0.85, duration: 2.2, ease: "power2.out" }
+        { y: 50, scale: 1.05, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 1.8, ease: "power4.out", delay: 0.4 }
       );
     }, containerRef);
 
-    // Mouse Move Parallax Handler
+    // Mouse Move Parallax Handler (for model and background shapes)
     const handleMouseMove = (e) => {
-      if (!containerRef.current || !imageRef.current) return;
+      if (!containerRef.current) return;
       const { clientX, clientY } = e;
       const { width, height } = containerRef.current.getBoundingClientRect();
       
-      // Compute mouse ratio from center
-      const moveX = (clientX / width - 0.5) * 15;
-      const moveY = (clientY / height - 0.5) * 15;
+      // Compute mouse ratio from center (-0.5 to 0.5)
+      const ratioX = (clientX / width - 0.5);
+      const ratioY = (clientY / height - 0.5);
 
-      gsap.to(imageRef.current, {
-        x: moveX,
-        y: moveY,
-        duration: 1.5,
-        ease: "power2.out"
-      });
+      if (imageRef.current) {
+        gsap.to(imageRef.current, {
+          x: ratioX * 12,
+          y: ratioY * 12,
+          duration: 1.5,
+          ease: "power2.out"
+        });
+      }
+
+      if (shapesRef.current) {
+        gsap.to(shapesRef.current.children, {
+          x: (idx) => ratioX * (20 + idx * 15),
+          y: (idx) => ratioY * (20 + idx * 15),
+          duration: 2,
+          ease: "power2.out",
+          stagger: 0.05
+        });
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -99,26 +112,28 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen flex items-center overflow-hidden bg-[#F8F7F3] select-none"
+      className="relative w-full min-h-screen flex items-center bg-[#F8F7F3] overflow-hidden select-none py-20 lg:py-0"
     >
-      {/* Background Image Layer */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div ref={imageRef} className="w-full h-full scale-105">
-          <LuxuryImage
-            src="https://images.unsplash.com/photo-1486308512493-ae6a8e574483?q=80&w=1600&auto=format&fit=crop"
-            alt="LUXORA Editorial Campaign"
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-        {/* Soft Vignette and Gradient Overlays matching rebranding palette */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F3] via-[#F8F7F3]/70 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F3] via-transparent to-[#F8F7F3]/40 z-10" />
-        <div className="absolute inset-0 bg-radial-vignette opacity-50 pointer-events-none z-10" />
+      {/* 1. Grain Noise Overlay */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3联%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
+
+      {/* 2. Floating Ambient Shapes (Luxury Soft Blur Gradient Circles) */}
+      <div ref={shapesRef} className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-accent/5 rounded-full blur-[100px] animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] bg-accent/10 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/3 right-10 w-[280px] h-[280px] bg-luxury-hover rounded-full blur-[80px]" />
       </div>
 
-      {/* Hero Content - Left Aligned with spacious design */}
-      <div className="relative z-25 w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center h-full">
-        <div className="max-w-3xl text-left flex flex-col items-start pt-16">
+      {/* Main Grid Content */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[90vh]">
+        
+        {/* Left Side (55% Width equivalent) */}
+        <div className="lg:col-span-7 text-left flex flex-col items-start justify-center pr-0 lg:pr-8 py-8 lg:py-0">
           
           {/* Subtitle Badge */}
           <div 
@@ -134,9 +149,9 @@ const Hero = () => {
           <div className="mb-6 select-text">
             <h1 
               ref={headlineRef}
-              className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide text-[#111111] leading-[1.1] uppercase"
+              className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide text-[#111111] leading-[1.08] uppercase"
             >
-              Crafted for<br />
+              Crafted For<br />
               Modern Luxury.
             </h1>
           </div>
@@ -152,7 +167,7 @@ const Hero = () => {
           {/* Call to Actions */}
           <div 
             ref={ctaRef}
-            className="flex flex-col sm:flex-row gap-5 items-stretch opacity-0"
+            className="flex flex-col sm:flex-row gap-5 items-stretch opacity-0 w-full sm:w-auto"
           >
             <MagneticButton>
               <Link
@@ -167,7 +182,7 @@ const Hero = () => {
             <MagneticButton>
               <Link
                 to="/collections"
-                className="px-8 py-4 bg-transparent text-[#111111] border border-black/10 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 flex justify-center"
+                className="px-8 py-4 bg-transparent text-[#111111] border border-black/10 font-syne font-bold text-xs tracking-[0.15em] rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 flex justify-center items-center"
               >
                 VIEW LOOKBOOK
               </Link>
@@ -175,17 +190,33 @@ const Hero = () => {
           </div>
 
         </div>
+
+        {/* Right Side - Full-Height Premium Model (45% Width equivalent) */}
+        <div className="lg:col-span-5 flex justify-center lg:justify-end items-center h-full w-full relative">
+          <div 
+            ref={imageRef}
+            className="relative w-full max-w-[420px] aspect-[3/4.5] overflow-hidden rounded-[2.5rem] bg-luxury-card border border-luxury-border shadow-premium opacity-0 group"
+          >
+            <LuxuryImage
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop"
+              alt="LUXORA Campaign Model"
+              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1500ms]"
+            />
+            
+            {/* Blending Gradients over the model block edges */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F3]/20 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-radial-vignette opacity-20 pointer-events-none" />
+          </div>
+        </div>
+
       </div>
 
       {/* Scroll Down Indicator */}
       <div 
         onClick={handleScrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer group"
+        className="absolute bottom-6 left-6 z-20 hidden lg:flex items-center gap-3 cursor-pointer group"
       >
-        <span className="text-[9px] tracking-widest text-luxury-muted font-bold group-hover:text-accent transition-colors duration-300 uppercase">
-          SCROLL TO EXPLORE
-        </span>
-        <div className="w-6 h-10 border border-luxury-border rounded-full flex justify-center p-1 group-hover:border-accent transition-colors duration-300">
+        <div className="w-6 h-10 border border-[#111111]/10 rounded-full flex justify-center p-1 group-hover:border-[#B68D40] transition-colors duration-300">
           <motion.div 
             animate={{ 
               y: [0, 12, 0] 
@@ -195,9 +226,12 @@ const Hero = () => {
               repeat: Infinity,
               ease: "easeInOut" 
             }}
-            className="w-1.5 h-1.5 rounded-full bg-accent"
+            className="w-1.5 h-1.5 rounded-full bg-[#B68D40]"
           />
         </div>
+        <span className="text-[9px] tracking-widest text-luxury-muted font-bold group-hover:text-accent transition-colors duration-300 uppercase">
+          SCROLL TO EXPLORE
+        </span>
       </div>
 
     </section>
